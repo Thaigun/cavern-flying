@@ -14,4 +14,8 @@ public class MainMenuManager : MonoBehaviour
 	void Update () {
 		
 	}
+
+    public void StartHosting() {
+
+    }
 }
