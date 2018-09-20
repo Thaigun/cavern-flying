@@ -159,6 +159,49 @@ MonoBehaviour:
   m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &17145995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17145996}
+  - component: {fileID: 17145997}
+  m_Layer: 0
+  m_Name: PartyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17145996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17145995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 179417270}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &17145997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17145995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9437a71d1be085458b1e01316b16bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lobbyPlayerList: {fileID: 2080615678}
+  _nameInput: {fileID: 1628667362}
+  _map: 1
 --- !u!1 &59546912
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +398,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1753382963}
+  - {fileID: 17145996}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1688,9 +1732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4370ab95543304caa4cc6848b6ed2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameInput: {fileID: 1628667362}
   _ipInput: {fileID: 183135462}
   _portInput: {fileID: 508569177}
-  _nameInput: {fileID: 1628667362}
   _yourIpText: {fileID: 1460660109}
 --- !u!1 &917591011
 GameObject:
@@ -3325,7 +3369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2129720da86534f802b34dd114afdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _port: 3008
   _maxConnections: 5
 --- !u!1 &1758528545
 GameObject:
@@ -3622,5 +3665,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f943c8d1895f1342940728625ffc3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 114162876131299046, guid: a2ddf2dcefe2cdd46bdf21cf68691e7a,
+  _playerNamePrefab: {fileID: 114945849194341110, guid: a2ddf2dcefe2cdd46bdf21cf68691e7a,
     type: 2}

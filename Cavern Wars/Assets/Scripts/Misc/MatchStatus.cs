@@ -5,8 +5,8 @@ using System.Text;
 
 namespace CavernWars
 {
-    public static class GlobalSettings
+    public enum MatchStatus
     {
-
+        LOBBY, WAITING, IN_PROGRESS, ENDED
     }
 }

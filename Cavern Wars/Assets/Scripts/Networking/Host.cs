@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CavernWars
 {
-    public static class GlobalSettings
+    public class Host
     {
 
     }

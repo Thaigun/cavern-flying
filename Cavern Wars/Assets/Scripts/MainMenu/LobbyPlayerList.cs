@@ -1,46 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CavernWars
 {
     public class LobbyPlayerList : MonoBehaviour
     {
         [SerializeField]
-        private LobbyPlayer _playerPrefab;
+        private Text _playerNamePrefab;
 
-        private List<LobbyPlayer> _players;
+        private List<Text> _playerNames;
 
-        private void Start()
+        private void Awake()
         {
-            _players = new List<LobbyPlayer>();
+            _playerNames = new List<Text>();
         }
 
-        public void UpdateAllPlayers(int count, IList<string> names, IList<string> ips, IList<int> ids, string yourName)
+        private void OnEnable()
         {
+            UpdateAllPlayers(PartyManager.Instance.Players);
+        }
+
+        private void OnDisable()
+        {
+            UpdateAllPlayers(new List<Player>());
+        }
+
+        public void UpdateAllPlayers(IList<Player> players)
+        {
+            // This looks a bit messy but the idea is to avoid respawning the game objects
+            // all the time. In the end, this is not called often enough for that to become an
+            // issue but I decided to keep this anyway.
+            
             // Destroy and remove players that are not in the new list of players.
-            for (int i = _players.Count-1; i >= count; i--)
+            for (int i = _playerNames.Count-1; i >= players.Count; i--)
             {
-                Destroy(_players[i]);
-                _players.RemoveAt(i);
+                Destroy(_playerNames[i].gameObject);
+                _playerNames.RemoveAt(i);
             }
 
             // Create as many game objects as are needed.
-            for (int i = _players.Count; i < count; i++)
+            for (int i = _playerNames.Count; i < players.Count; i++)
             {
-                LobbyPlayer newPlayer = Instantiate(_playerPrefab, this.transform);
-                _players.Add(newPlayer);
+                Text newPlayer = Instantiate(_playerNamePrefab, this.transform);
+                _playerNames.Add(newPlayer);
             }
 
-            if (count != _players.Count)
+            if (players.Count != _playerNames.Count)
             {
                 Debug.LogError("This code is messed up, take a look...");
             }
 
-            for (int i = 0; i < count; )
+            for (int i = 0; i < players.Count; i++)
             {
-                LobbyPlayer plr = _players[i];
-                plr.SetData(names[i], ips[i], ids[i], names[i] == yourName);
+                Text plr = _playerNames[i];
+                plr.text = players[i].Name;
+                plr.color = players[i].IsYou ? Color.blue : Color.white;
+                plr.color = players[i].IsHost ? Color.red : plr.color;
             }
         }
     }

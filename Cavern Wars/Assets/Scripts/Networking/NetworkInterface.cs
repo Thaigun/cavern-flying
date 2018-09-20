@@ -2,24 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.Types;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 namespace CavernWars
 {
+    // Network interface polls the low level system for received network messages.
+    // Other classes can register to handle those events.
+    public delegate void ConnectionResponseDel(int connectionId);
+    public delegate void DisconnectDel(int connectionId);
+    public delegate void DataDel(MessageContainer msgContainer);
+
     public class NetworkInterface : MonoBehaviour
     {
         [SerializeField]
         private int _maxConnections = 5;
 
         private int _hostId;
-        private HashSet<int> _waitingConnectionIds; // Connections that have not been confirmed by the other party.
-        private HashSet<int> _connectionIds; // Confirmed connections.
         private bool _networkTransportStarted;
 
         public static NetworkInterface Instance { get; private set; }
-        public Queue<MessageBase> ReceivedMessages { get; private set; }
+
+        public ConnectionResponseDel connectionResponseDel;
+        public DisconnectDel disconnectDel;
+        public DataDel gameUpdateDel;
+        public DataDel lobbyUpdateDel;
+        public DataDel matchStatusDel;
+        public DataDel playerInfoDel;
+        public DataDel sceneLoadedDel;
+
+        public HashSet<int> WaitingConnectionIds { get; private set; }
+        public HashSet<int> ConnectionIds { get; private set; }
+        public byte ReliableChannel { get; private set; }
+        public byte UnreliableChannel { get; private set; }
 
         // Use this for initialization
         void Start()
@@ -28,9 +44,8 @@ namespace CavernWars
             {
                 Instance = this;
             }
-            _connectionIds = new HashSet<int>();
-            _waitingConnectionIds = new HashSet<int>();
-            ReceivedMessages = new Queue<MessageBase>();
+            ConnectionIds = new HashSet<int>();
+            WaitingConnectionIds = new HashSet<int>();
         }
 
         // Update is called once per frame
@@ -59,13 +74,13 @@ namespace CavernWars
                 if (recSize > buffer.Length)
                 {
                     // TODO: Solve this.
-                    Debug.LogWarning("Received message longer than the buffer. Expect problems");
+                    Debug.LogWarning("Received message longer than the buffer. Expect problems!");
                 }
 
                 switch (evtType)
                 {
                     case NetworkEventType.DataEvent:
-                        OnData(buffer);
+                        OnData(buffer, recHostId, recConnectionId);
                         break;
                     case NetworkEventType.DisconnectEvent:
                         OnDisconnect(recConnectionId);
@@ -81,43 +96,86 @@ namespace CavernWars
             } while (evtType != NetworkEventType.Nothing);
         }
 
-        private void OnData(byte[] buffer)
+        private void OnData(byte[] buffer, int hostId, int connectionId)
         {
-            ReceivedMessages.Enqueue(ReadData(buffer));
+            MessageContainer msgContainer = ReadData(buffer);
+            msgContainer.ConnectionId = connectionId;
+            msgContainer.HostId = hostId;
+            
+            // Call registered delegate methdos for different message types.
+            switch (msgContainer.MsgType)
+            {
+                case (MessageType.GAME_UPDATE):
+                    if (gameUpdateDel != null)
+                    {
+                        gameUpdateDel(msgContainer);
+                    }
+                    break;
+                case (MessageType.LOBBY_UPDATE):
+                    if (lobbyUpdateDel != null)
+                    {
+                        lobbyUpdateDel(msgContainer);
+                    }
+                    break;
+                case (MessageType.MATCH_STATUS):
+                    if (matchStatusDel != null)
+                    {
+                        matchStatusDel(msgContainer);
+                    }
+                    break;
+                case (MessageType.PLAYER_INFO):
+                    if (playerInfoDel != null)
+                    {
+                        playerInfoDel(msgContainer);
+                    }
+                    break;
+                case (MessageType.SCENE_LOADED):
+                    if (sceneLoadedDel != null)
+                    {
+                        sceneLoadedDel(msgContainer);
+                    }
+                    break;
+            }
             Debug.Log("Received data message");
         }
 
         private void OnConnect(int connectionId)
         {
             // In case of a client, who makes the initial connection
-            if (_waitingConnectionIds.Contains(connectionId))
+            if (WaitingConnectionIds.Contains(connectionId))
             {
                 Debug.Log("Connection response received");
-                _waitingConnectionIds.Remove(connectionId);
+                if (connectionResponseDel != null)
+                {
+                    connectionResponseDel(connectionId);
+                }
+                WaitingConnectionIds.Remove(connectionId);
             }
             // In case of a host, who receives connections
             else
             {
                 Debug.Log("Connection received: " + connectionId);
             }
-            _connectionIds.Add(connectionId);
+            ConnectionIds.Add(connectionId);
         }
 
         private void OnDisconnect(int connectionId)
         {
-            _connectionIds.Remove(connectionId);
+            ConnectionIds.Remove(connectionId);
             Debug.Log("Connection sidconnected: " + connectionId);
         }
 
-        private MessageBase ReadData(byte[] buffer)
+        private MessageContainer ReadData(byte[] buffer)
         {
+            MessageContainer container = new MessageContainer();
             NetworkReader reader = new NetworkReader(buffer);
             var messageSizeData = reader.ReadBytes(2); // Size of the message
             byte[] messageTypeData = reader.ReadBytes(2); // Type of the message
             // Convert the byte array to short.
             short messageType = (short)((messageTypeData[1] << 8) + messageTypeData[0]);
             MessageType msgType = (MessageType)messageType;
-            reader.SeekZero();
+            container.MsgType = msgType;
+            //reader.SeekZero();
 
             MessageBase message;
             switch (msgType)
@@ -134,11 +192,15 @@ namespace CavernWars
                 case MessageType.SCENE_LOADED:
                     message = new SceneLoadedMessage();
                     break;
+                case MessageType.PLAYER_INFO:
+                    message = new PlayerInfoMessage();
+                    break;
                 default:
                     throw new System.Exception("Message type was unexpected: " + msgType);
             }
             message.Deserialize(reader);
-            return message;
+            container.Message = message;
+            return container;
         }
 
         private void InitNetworkTransport()
@@ -157,36 +219,46 @@ namespace CavernWars
         {
             InitNetworkTransport();
             ConnectionConfig config = new ConnectionConfig();
+            ReliableChannel = config.AddChannel(QosType.Reliable);
+            UnreliableChannel = config.AddChannel(QosType.UnreliableSequenced);
             HostTopology topology = new HostTopology(config, _maxConnections);
             _hostId = NetworkTransport.AddHost(topology);
         }
 
-        public void ConnectToIP(string ip, int port)
+        public int ConnectToIP(string ip, int port)
         {
             byte error;
             int connectionId = NetworkTransport.Connect(_hostId, ip, port, 0, out error);
             NetworkError err = (NetworkError)error;
             if (err == NetworkError.Ok)
             {
-                _waitingConnectionIds.Add(connectionId);
+                WaitingConnectionIds.Add(connectionId);
             }
+            return connectionId;
         }
 
-        public void SendToAllConnected(MessageType msgType, MessageBase msg, int channelId = 0)
+        public void SendToAllConnected(MessageType msgType, MessageBase msg, int channelId = -1)
         {
-            foreach (int connId in _connectionIds)
+            if (channelId == -1) { channelId = ReliableChannel; }
+            foreach (int connId in ConnectionIds)
             {
-                Send(msgType, msg, channelId, connId);
+                Send(msgType, msg, connId, channelId);
             }
         }
 
-        public void Send(MessageType msgType, MessageBase msg, int channelId, int connectionId)
+        public void Send(MessageType msgType, MessageBase msg, int connectionId, int channelId = -1)
         {
+            if (channelId == -1) { channelId = ReliableChannel; }
             NetworkWriter writer = new NetworkWriter();
             writer.StartMessage((short)msgType);
             msg.Serialize(writer);
             writer.FinishMessage();
             byte[] byteMsg = writer.ToArray();
+
+            var reader = new NetworkReader(byteMsg);
+            reader.ReadBytes(4);
+            msg.Deserialize(reader);
+
             byte error;
             NetworkTransport.Send(_hostId, connectionId, channelId, byteMsg, byteMsg.Length, out error);
             NetworkError err = (NetworkError)error;
@@ -194,18 +266,18 @@ namespace CavernWars
 
         public void CloseConnections()
         {
-            foreach (var connId in _connectionIds)
+            foreach (var connId in ConnectionIds)
             {
                 byte error;
                 NetworkTransport.Disconnect(_hostId, connId, out error);
                 NetworkError err = (NetworkError)error;
             }
-            _connectionIds.Clear();
-            _waitingConnectionIds.Clear();
+            ConnectionIds.Clear();
+            WaitingConnectionIds.Clear();
             ShutdownNetworkTransport();
         }
 
-        public string GetIP()
+        public string GetYourIp()
         {
             string hostName = Dns.GetHostName();
             IPAddress[] addresses = Dns.GetHostAddresses(hostName);
@@ -219,6 +291,23 @@ namespace CavernWars
                 }
             }
             return null;
+        }
+
+        public string GetConnectionIp(int connectionId, out int port)
+        {
+            NetworkID networkId;
+            NodeID nodeId;
+            byte error;
+            string address;
+
+            NetworkTransport.GetConnectionInfo(_hostId, connectionId, out address, out port, out networkId, out nodeId, out error);
+
+            var err = (NetworkError)error;
+            if (err != NetworkError.Ok)
+            {
+                throw new System.Exception("Error with getting connection info");
+            }
+            return address;
         }
     }
 }

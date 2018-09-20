@@ -11,7 +11,7 @@ namespace CavernWars
     /// </summary>
     public class LobbyUpdateMessage : MessageBase
     {
-        public int map;
+        public int map; // -1 means lobby/not ready, 1, 2, 3... mean the according map.
         public LobbyPlayerInfo[] players;
     }
 
@@ -19,8 +19,21 @@ namespace CavernWars
     public class LobbyPlayerInfo : MessageBase
     {
         public string name;
-        public int id;
         public string ip;
-        public bool host;
+        public int port;
+        public bool isHost;
+   
+        public LobbyPlayerInfo()
+        {
+
+        }
+
+        public LobbyPlayerInfo(Player plr)
+        {
+            name = plr.Name;
+            ip = plr.Ip;
+            port = plr.Port;
+            isHost = plr.IsHost;
+        }
     }
 }
