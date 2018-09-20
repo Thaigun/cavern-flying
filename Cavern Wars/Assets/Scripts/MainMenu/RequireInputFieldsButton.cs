@@ -4,35 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class RequireInputFieldsButton : MonoBehaviour
+namespace CavernWars
 {
-    [SerializeField]
-    private List<TMP_InputField> _requiredInputFields;
-
-    protected Button ButtonComponent
+    public class RequireInputFieldsButton : MonoBehaviour
     {
-        get
+        [SerializeField]
+        private List<TMP_InputField> _requiredInputFields;
+
+        protected Button ButtonComponent
         {
-            return GetComponent<Button>();
+            get
+            {
+                return GetComponent<Button>();
+            }
         }
-    }
 
-    // Update is called once per frame
-    protected virtual void Update ()
-    {
-        SetInteractable();
-	}
-
-    /// <summary>
-    /// Checks and sets the button interactable if prerequisites are fulfilled.
-    /// </summary>
-    void SetInteractable()
-    {
-        bool emptyFieldsFound = false;
-        foreach (var input in _requiredInputFields)
+        // Update is called once per frame
+        protected virtual void Update()
         {
-            emptyFieldsFound = emptyFieldsFound || string.IsNullOrEmpty(input.text);
+            SetInteractable();
         }
-        ButtonComponent.interactable = !emptyFieldsFound;
+
+        /// <summary>
+        /// Checks and sets the button interactable if prerequisites are fulfilled.
+        /// </summary>
+        void SetInteractable()
+        {
+            bool emptyFieldsFound = false;
+            foreach (var input in _requiredInputFields)
+            {
+                emptyFieldsFound = emptyFieldsFound || string.IsNullOrEmpty(input.text);
+            }
+            ButtonComponent.interactable = !emptyFieldsFound;
+        }
     }
 }

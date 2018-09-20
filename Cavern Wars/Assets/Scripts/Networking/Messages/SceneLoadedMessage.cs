@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine.Networking;
 
 namespace CavernWars
 {
-    enum MessageType
+    public class SceneLoadedMessage : MessageBase
     {
-        LOBBY_UPDATE,
-        SCENE_LOADED,
-        MATCH_STATUS,
-        GAME_UPDATE
+        public int sceneLoaded;
     }
 }
-
-

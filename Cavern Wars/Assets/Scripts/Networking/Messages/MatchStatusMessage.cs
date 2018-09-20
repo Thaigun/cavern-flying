@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using UnityEngine.Networking;
 
-public class SingleIntMessage : MessageBase
+namespace CavernWars
 {
-    public int value;
+    public class MatchStatusMessage : MessageBase
+    {
+        public int matchStatus;
+    }
 }

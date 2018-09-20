@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[RequireComponent(typeof(TMP_InputField))]
-public class PlayerNameInput : MonoBehaviour
+namespace CavernWars
 {
-    [SerializeField]
-    private GameObject _helpBubble;
-
-	public void SetHelpBubbleActive()
+    [RequireComponent(typeof(TMP_InputField))]
+    public class PlayerNameInput : MonoBehaviour
     {
-        string nameText = GetComponent<TMP_InputField>().text;
-        _helpBubble.SetActive(string.IsNullOrEmpty(nameText));
+        [SerializeField]
+        private GameObject _helpBubble;
+
+        public void SetHelpBubbleActive()
+        {
+            string nameText = GetComponent<TMP_InputField>().text;
+            _helpBubble.SetActive(string.IsNullOrEmpty(nameText));
+        }
     }
 }
