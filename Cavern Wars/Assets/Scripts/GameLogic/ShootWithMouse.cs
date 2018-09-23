@@ -39,11 +39,11 @@ public class ShootWithMouse : MonoBehaviour
 
             Bullet bullet = Instantiate(_bulletPrefab, _bulletParent);
             bullet.transform.position = this.transform.position;
-
-            Vector3 cursorInWorld = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 cursorInWorld = _mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -_mainCamera.transform.position.z));
             Vector3 aimDirection = cursorInWorld - transform.position;
             aimDirection.z = 0;
             bullet.ShootTo(aimDirection.normalized * _bulletSpeed);
+
             Destroy(bullet.gameObject, _bulletTimeToLive);
         }
 	}

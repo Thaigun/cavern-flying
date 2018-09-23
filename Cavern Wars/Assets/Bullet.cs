@@ -22,6 +22,6 @@ public class Bullet : MonoBehaviour
     /// <param name="direction">Represents direction and speed of the bullet</param>
     public void ShootTo(Vector3 direction)
     {
-        Debug.Log("Shoot to: " + direction);
+        GetComponent<Rigidbody2D>().AddForce(direction, ForceMode2D.Impulse);
     }
 }
