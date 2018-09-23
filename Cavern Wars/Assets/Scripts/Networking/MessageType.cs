@@ -11,7 +11,8 @@ namespace CavernWars
         SCENE_LOADED,
         MATCH_STATUS,
         GAME_UPDATE,
-        PLAYER_INFO
+        PLAYER_INFO,
+        HIT_MESSAGE
     }
 }
 

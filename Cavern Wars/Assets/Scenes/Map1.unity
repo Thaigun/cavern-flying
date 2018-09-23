@@ -155,7 +155,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4225077623219848, guid: 1e932ab4410c2b84db9194f8d0fca31e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.00000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4225077623219848, guid: 1e932ab4410c2b84db9194f8d0fca31e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -193,11 +193,6 @@ Prefab:
     - target: {fileID: 1812225309406572, guid: 1e932ab4410c2b84db9194f8d0fca31e, type: 2}
       propertyPath: m_Name
       value: PlayerShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 114132779414344028, guid: 1e932ab4410c2b84db9194f8d0fca31e,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e932ab4410c2b84db9194f8d0fca31e, type: 2}
@@ -614,6 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1690772596}
+  - component: {fileID: 1690772597}
   m_Layer: 0
   m_Name: EnemyShips
   m_TagString: Untagged
@@ -634,6 +630,17 @@ Transform:
   m_Father: {fileID: 1703483349}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690772597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690772595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1f3001d9c0f8f488cd04675220d574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1703483348
 GameObject:
   m_ObjectHideFlags: 0

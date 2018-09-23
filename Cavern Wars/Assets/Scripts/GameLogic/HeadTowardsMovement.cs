@@ -19,7 +19,7 @@ public class HeadTowardsMovement : MonoBehaviour
         _referenceUp = transform.rotation;
     }
 
-    void Update ()
+    void FixedUpdate ()
     {
         _directionOfMovement = transform.position - _previousPosition;
         if (!Vector3.zero.Equals(_directionOfMovement))
@@ -28,10 +28,6 @@ public class HeadTowardsMovement : MonoBehaviour
             var rotation = Quaternion.RotateTowards(transform.rotation, lookRot, _rotationSpeed);
             transform.rotation = rotation;
         }
-	}
-
-    private void LateUpdate()
-    {
         _previousPosition = transform.position;
     }
 }

@@ -31,6 +31,7 @@ namespace CavernWars
         public DataDel matchStatusDel;
         public DataDel playerInfoDel;
         public DataDel sceneLoadedDel;
+        public DataDel playerHitDel;
 
         public HashSet<int> WaitingConnectionIds { get; private set; }
         public HashSet<int> ConnectionIds { get; private set; }
@@ -63,19 +64,23 @@ namespace CavernWars
             int recConnectionId;
             int recChannelId;
             int recSize;
-            byte[] buffer = new byte[20000];
+            byte[] buffer;
             byte error;
+            NetworkError err;
 
             NetworkEventType evtType = NetworkEventType.Nothing;
 
             do
             {
-                evtType = NetworkTransport.Receive(out recHostId, out recConnectionId, out recChannelId, buffer, buffer.Length, out recSize, out error);
-                if (recSize > buffer.Length)
+                int bufferSize = 500;
+                // If the message does not fit, double the buffer size.
+                do
                 {
-                    // TODO: Solve this.
-                    Debug.LogWarning("Received message longer than the buffer. Expect problems!");
-                }
+                    buffer = new byte[bufferSize];
+                    evtType = NetworkTransport.Receive(out recHostId, out recConnectionId, out recChannelId, buffer, bufferSize, out recSize, out error);
+                    err = (NetworkError)error;
+                    bufferSize *= 2;
+                } while (err != NetworkError.MessageToLong);
 
                 switch (evtType)
                 {
@@ -133,6 +138,11 @@ namespace CavernWars
                     if (sceneLoadedDel != null)
                     {
                         sceneLoadedDel(msgContainer);
+                    }
+                    break;
+                case (MessageType.HIT_MESSAGE):
+                    if (playerHitDel != null) {
+                        playerHitDel(msgContainer);
                     }
                     break;
             }
@@ -194,6 +204,9 @@ namespace CavernWars
                     break;
                 case MessageType.PLAYER_INFO:
                     message = new PlayerInfoMessage();
+                    break;
+                case MessageType.HIT_MESSAGE:
+                    message = new PlayerHitMessage();
                     break;
                 default:
                     throw new System.Exception("Message type was unexpected: " + msgType);

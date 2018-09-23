@@ -11,12 +11,14 @@ public class MoveWithWASD : MonoBehaviour
 
     private float ThrustForce { get { return _thrustForce; } }
 
+    public bool EnginesOn { get; private set; }
+
 	void Start ()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
 	}
 	
-	void Update ()
+	void FixedUpdate ()
     {
         // To which direction is the player controlling towards
         Vector3 steerDirection = Vector3.zero; 
@@ -36,6 +38,8 @@ public class MoveWithWASD : MonoBehaviour
         {
             steerDirection += Vector3.right;
         }
+
+        EnginesOn = steerDirection.sqrMagnitude > 0.001f;
 
         Vector3 accel = steerDirection.normalized * ThrustForce;
         _rigidBody.AddForce(accel);
