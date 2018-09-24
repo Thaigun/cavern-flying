@@ -21,13 +21,12 @@ GameObject:
   - component: {fileID: 4012496098989804}
   - component: {fileID: 33379736235310330}
   - component: {fileID: 23013109307218414}
-  - component: {fileID: 58217953605510134}
   - component: {fileID: 50071072080791610}
   - component: {fileID: 96888861088056822}
-  - component: {fileID: 114599152387370634}
-  - component: {fileID: 114116020269389802}
+  - component: {fileID: 114886108598112006}
+  - component: {fileID: 114690246094789508}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: NetworkBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,21 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &58217953605510134
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793556765638736}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.8189894e-12}
-  serializedVersion: 2
-  m_Radius: 0.50000024
 --- !u!96 &96888861088056822
 TrailRenderer:
   serializedVersion: 2
@@ -224,7 +208,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &114116020269389802
+--- !u!114 &114690246094789508
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c244c849821e640a9722d1d2d8e526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114599152387370634
+--- !u!114 &114886108598112006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,8 +227,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1793556765638736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26673764a7b4234281928a488bdd75c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c83e131e8187104f88e79696104d2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToLive: 10
-  _damage: 10

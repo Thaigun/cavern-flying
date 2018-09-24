@@ -32,6 +32,7 @@ namespace CavernWars
         public DataDel playerInfoDel;
         public DataDel sceneLoadedDel;
         public DataDel playerHitDel;
+        public DataDel playerHealthDel;
 
         public HashSet<int> WaitingConnectionIds { get; private set; }
         public HashSet<int> ConnectionIds { get; private set; }
@@ -145,6 +146,12 @@ namespace CavernWars
                         playerHitDel(msgContainer);
                     }
                     break;
+                case (MessageType.HEALTH_MESSAGE):
+                    if (playerHealthDel != null)
+                    {
+                        playerHealthDel(msgContainer);
+                    }
+                    break;
             }
             Debug.Log("Received data message");
         }
@@ -207,6 +214,9 @@ namespace CavernWars
                     break;
                 case MessageType.HIT_MESSAGE:
                     message = new PlayerHitMessage();
+                    break;
+                case MessageType.HEALTH_MESSAGE:
+                    message = new PlayersHealthMessage();
                     break;
                 default:
                     throw new System.Exception("Message type was unexpected: " + msgType);

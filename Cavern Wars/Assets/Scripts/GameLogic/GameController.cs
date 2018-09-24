@@ -6,25 +6,19 @@ namespace CavernWars
 {
     public class GameController : MonoBehaviour
     {
+        public static GameController Instance { get; private set; }
 
-        [SerializeField]
-        private Transform _playersContainer;
+        public Dictionary<string, HealthBar> Healthbars { get; private set; }
 
-        private bool Started { get; set; }
-
-        void Start()
+        private void Awake()
         {
-
+            Instance = this;
+            Healthbars = new Dictionary<string, HealthBar>();
         }
 
-        void Update()
+        public void AddHealthbar(string playerName, HealthBar hpBar)
         {
-            if (!Started && PartyManager.Instance != null && PartyManager.Instance.PartyStatus == MatchStatus.IN_PROGRESS)
-            {
-                _playersContainer.gameObject.SetActive(true);
-                Started = true;
-            }
-                
+            Healthbars.Add(playerName, hpBar);
         }
     }
 }

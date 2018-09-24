@@ -38,7 +38,7 @@ namespace CavernWars
         {
             if (Time.time - _spawnTime > _timeToLive)
             {
-                DespawnBullet(BulletDespawnType.SILENT);
+                DespawnBullet(Id, BulletDespawnType.SILENT);
             }
         }
 
@@ -59,7 +59,7 @@ namespace CavernWars
             }
         }
 
-        private void DespawnBullet(BulletDespawnType type)
+        private void DespawnBullet(int id, BulletDespawnType type)
         {
             if (type == BulletDespawnType.NONE)
             {
@@ -68,7 +68,7 @@ namespace CavernWars
 
             if (GlobalEvents.projectileChangeDel != null)
             {
-                GlobalEvents.projectileChangeDel(Id, transform.position, _rigidBody.velocity, (int)type);
+                GlobalEvents.projectileChangeDel(id, transform.position, Vector2.zero, (int)type);
             }
 
             if (type == BulletDespawnType.SMALL_HIT)

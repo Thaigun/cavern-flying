@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CavernWars {
+namespace CavernWars
+{
     public class Player
     {
         public string Name { get; set; }
