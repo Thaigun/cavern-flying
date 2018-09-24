@@ -46,6 +46,8 @@ namespace CavernWars
                 aimDirection.z = 0;
                 bullet.ShootTo(aimDirection.normalized * _bulletSpeed);
                 bullet.Id = ++_bulletIdStepper;
+
+                GlobalEvents.projectileChangeDel(bullet.Id, bullet.RigidbodyComponent.position, bullet.RigidbodyComponent.velocity, (int)BulletDespawnType.NONE);
             }
         }
     }

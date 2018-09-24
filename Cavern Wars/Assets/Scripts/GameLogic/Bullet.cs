@@ -26,11 +26,22 @@ namespace CavernWars
 
         public int Id { get; set; }
 
+        public Rigidbody2D RigidbodyComponent
+        {
+            get
+            {
+                if (_rigidBody == null)
+                {
+                    _rigidBody = GetComponent<Rigidbody2D>();
+                }
+                return _rigidBody;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
             _spawnTime = Time.time;
-            _rigidBody = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame

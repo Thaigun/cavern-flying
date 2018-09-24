@@ -14,14 +14,23 @@ namespace CavernWars
         // Use this for initialization
         void Awake()
         {
+            _enemies = new List<MoveWithNetwork>();
+
             foreach (Player player in PartyManager.Instance.Players)
             {
+                if (player.IsYou)
+                {
+                    continue;
+                }
                 MoveWithNetwork enemy = Instantiate(_enemyPrefab, transform);
                 enemy.NetworkPlayer = player;
                 _enemies.Add(enemy);
                 HealthBar hpBar = enemy.GetComponentInChildren<HealthBar>(true);
-                hpBar.PlayerName = player.Name;
-                GameController.Instance.AddHealthbar(player.Name, hpBar);
+                if (hpBar)
+                {
+                    hpBar.PlayerName = player.Name;
+                    GameController.Instance.AddHealthbar(player.Name, hpBar);
+                }
             }
 
             NetworkInterface.Instance.gameUpdateDel += OnGameUpdate;

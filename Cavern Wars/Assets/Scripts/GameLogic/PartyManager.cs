@@ -129,7 +129,8 @@ namespace CavernWars
                 LobbyPlayerInfo msgPlr = lobbyMsg.players[i];
                 if (!Players.Any(plr => plr.Name.Equals(msgPlr.name)))
                 {
-                    Players.Add(new Player(msgPlr.name, msgPlr.ip, msgPlr.port, -1, msgPlr.isHost, msgPlr.name.Equals(YourName)));
+                    int connectionId = msgPlr.isHost ? HostConnectionId : -1;
+                    Players.Add(new Player(msgPlr.name, msgPlr.ip, msgPlr.port, connectionId, msgPlr.isHost, msgPlr.name.Equals(YourName)));
                 }
             }
             List<Player> toBeRemoved = new List<Player>();
@@ -297,9 +298,9 @@ namespace CavernWars
                     // Open connections to other clients, host is already connected
                     // The player whose name comes first when ordered, requests the
                     // connection,
-                    if (!player.IsHost)
+                    if (!player.IsHost && !player.IsYou)
                     {
-                        _network.ConnectToIP(player.Ip, player.Port);
+                        player.ConnectionId = _network.ConnectToIP(player.Ip, player.Port);
                     }
                 }
             }

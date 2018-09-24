@@ -19,6 +19,9 @@ namespace CavernWars
         [SerializeField]
         private int _maxConnections = 5;
 
+        [SerializeField]
+        private bool _logAll;
+
         private int _hostId;
         private bool _networkTransportStarted;
 
@@ -81,7 +84,7 @@ namespace CavernWars
                     evtType = NetworkTransport.Receive(out recHostId, out recConnectionId, out recChannelId, buffer, bufferSize, out recSize, out error);
                     err = (NetworkError)error;
                     bufferSize *= 2;
-                } while (err != NetworkError.MessageToLong);
+                } while (err == NetworkError.MessageToLong);
 
                 switch (evtType)
                 {
@@ -112,6 +115,7 @@ namespace CavernWars
             switch (msgContainer.MsgType)
             {
                 case (MessageType.GAME_UPDATE):
+                    Log("Received game update");
                     if (gameUpdateDel != null)
                     {
                         gameUpdateDel(msgContainer);
@@ -153,7 +157,6 @@ namespace CavernWars
                     }
                     break;
             }
-            Debug.Log("Received data message");
         }
 
         private void OnConnect(int connectionId)
@@ -161,7 +164,6 @@ namespace CavernWars
             // In case of a client, who makes the initial connection
             if (WaitingConnectionIds.Contains(connectionId))
             {
-                Debug.Log("Connection response received");
                 if (connectionResponseDel != null)
                 {
                     connectionResponseDel(connectionId);
@@ -171,7 +173,7 @@ namespace CavernWars
             // In case of a host, who receives connections
             else
             {
-                Debug.Log("Connection received: " + connectionId);
+
             }
             ConnectionIds.Add(connectionId);
         }
@@ -179,7 +181,6 @@ namespace CavernWars
         private void OnDisconnect(int connectionId)
         {
             ConnectionIds.Remove(connectionId);
-            Debug.Log("Connection sidconnected: " + connectionId);
         }
 
         private MessageContainer ReadData(byte[] buffer)
@@ -238,6 +239,14 @@ namespace CavernWars
             _networkTransportStarted = false;
         }
 
+        private void Log(string logMsg)
+        {
+            if (_logAll)
+            {
+                Debug.Log(logMsg);
+            }
+        }
+
         public void OpenSocket()
         {
             InitNetworkTransport();
@@ -277,14 +286,10 @@ namespace CavernWars
             msg.Serialize(writer);
             writer.FinishMessage();
             byte[] byteMsg = writer.ToArray();
-
-            var reader = new NetworkReader(byteMsg);
-            reader.ReadBytes(4);
-            msg.Deserialize(reader);
-
             byte error;
             NetworkTransport.Send(_hostId, connectionId, channelId, byteMsg, byteMsg.Length, out error);
             NetworkError err = (NetworkError)error;
+            Log("Sent message");
         }
 
         public void CloseConnections()

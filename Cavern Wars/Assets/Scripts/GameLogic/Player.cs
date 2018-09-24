@@ -12,7 +12,7 @@ namespace CavernWars
 
         public int Port { get; private set; }
 
-        public int ConnectionId { get; private set; }
+        public int ConnectionId { get; set; }
 
         public bool IsYou { get; private set; }
 

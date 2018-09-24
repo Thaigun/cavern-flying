@@ -3370,6 +3370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxConnections: 5
+  _logAll: 0
 --- !u!1 &1758528545
 GameObject:
   m_ObjectHideFlags: 0

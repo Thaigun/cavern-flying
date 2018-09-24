@@ -46,13 +46,15 @@ namespace CavernWars
                 NetworkBullet netBullet = _bullets.Find(netBul => netBul.Id == bulletInfo.id);
                 if (netBullet == null)
                 {
-                    netBullet = Instantiate(_networkBulletPrefab, transform);
+                    netBullet = Instantiate(_networkBulletPrefab, bulletInfo.position, Quaternion.identity);
+                    _bullets.Add(netBullet);
                 }
-                netBullet.RigidbodyComponent.position = bulletInfo.position;
-                netBullet.RigidbodyComponent.velocity = bulletInfo.movement;
+                netBullet.Id = bulletInfo.id;
+                netBullet.RigidbodyComponent.velocity = bulletInfo.movement;                
 
                 if ((BulletDespawnType)bulletInfo.despawnType != BulletDespawnType.NONE)
                 {
+                    _bullets.Remove(netBullet);
                     netBullet.Despawn((BulletDespawnType)bulletInfo.despawnType);
                 }
             }

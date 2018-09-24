@@ -7,15 +7,21 @@ namespace CavernWars
     [RequireComponent(typeof(Rigidbody2D))]
     class NetworkBullet : MonoBehaviour
     {
-        public Rigidbody2D RigidbodyComponent { get; private set; }
+        private Rigidbody2D _rigidBody;
+
+        public Rigidbody2D RigidbodyComponent
+        {
+            get
+            {
+                if (_rigidBody == null)
+                {
+                    _rigidBody = GetComponent<Rigidbody2D>();
+                }
+                return _rigidBody;
+            }
+        }
 
         public int Id { get; set; }
-
-        // Use this for initialization
-        void Start()
-        {
-            RigidbodyComponent = GetComponent<Rigidbody2D>();
-        }
 
         public void Despawn(BulletDespawnType type)
         {
