@@ -10,5 +10,6 @@ namespace CavernWars
     {
         public string[] playerNames;
         public float[] healths;
+        public float maxHealth;
     }
 }

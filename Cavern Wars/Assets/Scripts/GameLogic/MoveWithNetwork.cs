@@ -12,6 +12,9 @@ namespace CavernWars
         [SerializeField]
         private NetworkBullet _networkBulletPrefab;
 
+        [SerializeField]
+        private Transform _rotateTransform;
+
         private List<NetworkBullet> _bullets;
 
         public Player NetworkPlayer { get; set; }
@@ -37,7 +40,7 @@ namespace CavernWars
             gameObject.SetActive(msg.alive);
 
             transform.position = msg.position;
-            transform.rotation = msg.rotation;
+            _rotateTransform.rotation = msg.rotation;
 
             _engine.SetEnginesActive(msg.enginesOn);
 

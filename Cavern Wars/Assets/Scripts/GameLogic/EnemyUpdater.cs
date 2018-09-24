@@ -14,6 +14,11 @@ namespace CavernWars
         // Use this for initialization
         void Awake()
         {
+            if (PartyManager.Instance == null || NetworkInterface.Instance == null)
+            {
+                return;
+            }
+
             _enemies = new List<MoveWithNetwork>();
 
             foreach (Player player in PartyManager.Instance.Players)
@@ -30,6 +35,11 @@ namespace CavernWars
                 {
                     hpBar.PlayerName = player.Name;
                     GameController.Instance.AddHealthbar(player.Name, hpBar);
+                }
+                MaterialChanger matChg = enemy.GetComponent<MaterialChanger>();
+                if (matChg != null)
+                {
+                    matChg.UpdateColor(player.Name);
                 }
             }
 

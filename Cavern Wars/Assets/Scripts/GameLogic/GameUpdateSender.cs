@@ -41,6 +41,10 @@ namespace CavernWars {
         // Update is called once per frame
         void Update()
         {
+            if (NetworkInterface.Instance == null)
+            {
+                return;
+            }
             if (Time.time - _lastPacketTime > _sendInterval)
             {
                 _lastPacketTime = Time.time;
@@ -54,7 +58,7 @@ namespace CavernWars {
             updateMessage.position = _playerTransform.position;
             updateMessage.rotation = _playerTransform.rotation;
             updateMessage.enginesOn = _moveWithWASD.EnginesOn;
-            updateMessage.alive = _playerTransform.gameObject.activeInHierarchy;
+            updateMessage.alive = GameController.Instance.WantsToLive;
             updateMessage.projectileChanges = _projectilesForNextMessage.ToArray();
             _projectilesForNextMessage.Clear();
             NetworkInterface.Instance.SendToAllConnected(MessageType.GAME_UPDATE, updateMessage, NetworkInterface.Instance.UnreliableChannel);

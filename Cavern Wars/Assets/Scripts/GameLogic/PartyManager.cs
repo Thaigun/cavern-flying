@@ -29,26 +29,8 @@ namespace CavernWars
         private NetworkInterface _network;
 
         public static PartyManager Instance { get; private set; }
-
-        private Host LocalHost { get; set; }
-        public bool IsHost
-        {
-            get
-            {
-                return LocalHost != null;
-            }
-            set
-            {
-                if (value && LocalHost == null)
-                {
-                    LocalHost = new Host();
-                }
-                else if (!value)
-                {
-                    LocalHost = null;
-                }
-            }
-        }
+        
+        public bool IsHost { get; set; }
         // Connection id to the host of the game.
         public int HostConnectionId { get; private set; }
         public MatchStatus PartyStatus { get; private set; }
@@ -114,7 +96,7 @@ namespace CavernWars
             Map = -1;
         }
 
-        private Player GetPlayerWithConnectionId(int connectionId)
+        public Player GetPlayerWithConnectionId(int connectionId)
         {
             return Players.Find(plr => plr.ConnectionId == connectionId);
         }

@@ -18,6 +18,9 @@ namespace CavernWars
         [SerializeField]
         private float _damage = 10f;
 
+        [SerializeField]
+        private GameObject _smallExplosionPrefab;
+
         private Vector2 _direction;
 
         private float _spawnTime;
@@ -61,12 +64,15 @@ namespace CavernWars
         {
             GetComponent<Rigidbody2D>().AddForce(direction, ForceMode2D.Impulse);
         }
-
-        private void OnCollisionEnter2D(Collision2D collision)
+        
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collision.otherCollider.CompareTag("Enemy"))
+            if (collider.CompareTag("Enemy"))
             {
-                GlobalEvents.projectileHitDel(collision.otherCollider.GetComponent<EnemyState>().Name, _damage);
+                if (GlobalEvents.projectileHitDel != null)
+                {
+                    GlobalEvents.projectileHitDel(collider.GetComponent<MoveWithNetwork>().NetworkPlayer.Name, _damage);
+                }
             }
         }
 
@@ -84,7 +90,8 @@ namespace CavernWars
 
             if (type == BulletDespawnType.SMALL_HIT)
             {
-                // TODO: Implement small boom boom.
+                var explosion = Instantiate(_smallExplosionPrefab, transform.position, _smallExplosionPrefab.transform.rotation);
+                Destroy(explosion, 1f);
             }
             else if (type == BulletDespawnType.BIG_HIT)
             {

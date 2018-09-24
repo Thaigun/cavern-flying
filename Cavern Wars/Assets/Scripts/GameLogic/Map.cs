@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+namespace CavernWars
 {
-    [SerializeField]
-    private List<Transform> _spawnPoints;
-
-	public Transform GetRandomSpawnPoint()
+    public class Map : MonoBehaviour
     {
-        return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+        [SerializeField]
+        private List<Transform> _spawnPoints;
+
+        public Transform GetRandomSpawnPoint()
+        {
+            return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+        }
     }
 }
