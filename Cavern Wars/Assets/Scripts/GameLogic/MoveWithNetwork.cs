@@ -15,16 +15,60 @@ namespace CavernWars
         [SerializeField]
         private Transform _rotateTransform;
 
-        private List<NetworkBullet> _bullets;
-        
-        void Update()
-        {
+        [SerializeField]
+        private int _bufferSize = 2;
 
-        }
+        private List<NetworkBullet> _bullets;
+
+        // When were the interpolation points received
+        private Queue<float> _bufferReceiveTimes;
+        private Queue<Vector3> _positionBuffer;
+        private Queue<Quaternion> _rotationBuffer;
+        private bool _interPolationInProgress;
 
         private void Start()
         {
             _bullets = new List<NetworkBullet>();
+            _bufferReceiveTimes = new Queue<float>();
+            _positionBuffer = new Queue<Vector3>();
+            _rotationBuffer = new Queue<Quaternion>();
+        }
+
+        void Update()
+        {
+            if (!_interPolationInProgress && _bufferReceiveTimes.Count >= _bufferSize)
+            {
+                StartCoroutine(InterpolateMovement());
+            }
+        }
+
+        private IEnumerator InterpolateMovement()
+        {
+            _interPolationInProgress = true;
+
+            float startTime, endTime, timePortion;
+            Vector3 startPos, endPos;
+            Quaternion startRot, endRot;
+
+            do
+            {
+                startTime = _bufferReceiveTimes.Dequeue();
+                startPos = _positionBuffer.Dequeue();
+                startRot = _rotationBuffer.Dequeue();
+
+                endTime = _bufferReceiveTimes.Peek();
+                endPos = _positionBuffer.Peek();
+                endRot = _rotationBuffer.Peek();
+
+                timePortion = (Time.time - startTime) / (endTime - startTime);
+
+                _rotateTransform.rotation = Quaternion.Lerp(startRot, endRot, timePortion);
+                transform.position = Vector3.Lerp(startPos, endPos, timePortion);
+
+                yield return null;
+            } while (timePortion < 1);
+
+            _interPolationInProgress = false;
         }
 
         /// <summary>
@@ -33,11 +77,12 @@ namespace CavernWars
         /// </summary>
         public void ApplyNewState(GameUpdateMessage msg)
         {
-            // TODO: Interpolate or extrapolate to make the movement smooth
-
-            transform.position = msg.position;
-            _rotateTransform.rotation = msg.rotation;
-
+            // TODO: Interpolate to make the movement smooth
+            _positionBuffer.Enqueue(msg.position);
+            _rotationBuffer.Enqueue(msg.rotation);
+            _bufferReceiveTimes.Enqueue(Time.time);
+            
+            // Engines and bullets can be switched on and off immediately.
             _engine.SetEnginesActive(msg.enginesOn);
 
             foreach (ProjectileChange bulletInfo in msg.projectileChanges)
