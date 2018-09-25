@@ -27,7 +27,7 @@ namespace CavernWars
         private MatchHost _host;
         
         private int _map = 1;
-
+        private bool _sceneLoadedSent;
         private NetworkInterface _network;
         private List<Player> _players;
 
@@ -71,21 +71,10 @@ namespace CavernWars
         public string YourName { get; private set; }
         public int Map { get; private set; }
 
-        // Use this for initialization
-        void Awake()
-        {
-            // We destroy the existing instance and keep the new one because if we return to the main 
-            // menu, there is no need to keep any data that has been stored to the party manager as 
-            // returning to the main menu means the party has ended.
-            if (Instance != null)
-            {
-                Destroy(Instance.gameObject);
-            }
-            Instance = this;
-        }
-
         private void Start()
         {
+            Instance = this;
+
             _network = NetworkInterface.Instance;
             _network.connectionResponseDel += OnConnectionResponse;
             _network.disconnectDel += OnDisconnect;
@@ -97,7 +86,10 @@ namespace CavernWars
 
         private void Update()
         {
-            
+            if (!_sceneLoadedSent)
+            {
+                TrySendSceneLoaded();
+            }
         }
 
         private void OnDestroy()
@@ -138,7 +130,7 @@ namespace CavernWars
             List<Player> toBeRemoved = new List<Player>();
             foreach (Player plr in Players)
             {
-                if (!lobbyMsg.players.Any(p => p.name == plr.Name))
+                if (!lobbyMsg.players.Any(p => p.name.Equals(plr.Name)))
                 {
                     toBeRemoved.Add(plr);
                 }
@@ -167,20 +159,24 @@ namespace CavernWars
                 infoMsg.name = _nameInput.text;
                 _network.Send(MessageType.PLAYER_INFO, infoMsg, connectionId);
             }
+        }
 
+        private void TrySendSceneLoaded()
+        {
             if (PartyStatus == MatchStatus.WAITING)
             {
                 if (!IsHost)
                 {
                     string sceneName = SceneManager.GetActiveScene().name;
                     // Clients have to wait for all connections to other clients to be established
-                    if (_network.ConnectionIds.Count == Players.Count && sceneName.Equals("Map" + _map))
+                    if (_network.ConnectionIds.Count + 1 == Players.Count && sceneName.Equals("Map" + _map))
                     {
                         SceneLoadedMessage sceneMsg = new SceneLoadedMessage()
                         {
                             sceneLoaded = _map
                         };
                         _network.Send(MessageType.SCENE_LOADED, sceneMsg, HostConnectionId);
+                        _sceneLoadedSent = true;
                     }
                 }
             }
@@ -197,16 +193,6 @@ namespace CavernWars
             else if (IsHost)
             {
                 Players.RemoveAll(plr => plr.ConnectionId == connectionId);
-            }
-        }
-
-        private void OnGameSceneLoaded(MessageContainer container)
-        {
-            Player player = GetPlayerWithConnectionId(container.ConnectionId);
-            SceneLoadedMessage sceneMsg = container.Message as SceneLoadedMessage;
-            if (sceneMsg.sceneLoaded == _map)
-            {
-                player.Ready = true;
             }
         }
 

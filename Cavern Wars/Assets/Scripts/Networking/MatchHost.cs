@@ -40,11 +40,12 @@ namespace CavernWars
             InvokeRepeating("SendLobbyUpdate", 1f, 1f);
 
             NetworkInterface.Instance.playerInfoDel += OnPlayerInfo;
+            NetworkInterface.Instance.sceneLoadedDel += OnGameSceneLoaded;
         }
 
         private void Update()
         {
-            if (_matchStatus == MatchStatus.WAITING && Players.All(plr => plr.Ready))
+            if (_matchStatus == MatchStatus.WAITING && Players.All(plr => plr.IsHost || plr.Ready))
             {
                 MatchStatusMessage statusMsg = new MatchStatusMessage()
                 {
@@ -53,7 +54,7 @@ namespace CavernWars
                 NetworkInterface.Instance.SendToAllConnected(MessageType.MATCH_STATUS, statusMsg);
                 _matchStatus = MatchStatus.IN_PROGRESS;
                 CancelInvoke("SendLobbyUpdate");
-                Started = true;
+                PrepareForMatchStart();
             }
 
             if (Started && NetworkInterface.Instance && Time.time - _lastPacketTime > _packetInterval)
@@ -77,7 +78,7 @@ namespace CavernWars
             {
                 for (int j = 0; j < _nextHealthMessage.playerNames.Length; j++)
                 {
-                    if (hitMessage.hitPlayers[i] == _nextHealthMessage.playerNames[i])
+                    if (hitMessage.hitPlayers[i].Equals(_nextHealthMessage.playerNames[j]))
                     {
                         _nextHealthMessage.healths[j] -= hitMessage.damages[i];
                         if (_nextHealthMessage.healths[j] <= 0f && !_playerDeathTime.ContainsKey(_nextHealthMessage.playerNames[j]))
@@ -87,6 +88,16 @@ namespace CavernWars
                         break;
                     }
                 }
+            }
+        }
+
+        private void OnGameSceneLoaded(MessageContainer container)
+        {
+            Player player = Players.Find(plr => plr.ConnectionId == container.ConnectionId);
+            SceneLoadedMessage sceneMsg = container.Message as SceneLoadedMessage;
+            if (sceneMsg.sceneLoaded == _map)
+            {
+                player.Ready = true;
             }
         }
 
@@ -112,7 +123,7 @@ namespace CavernWars
             _playerDeathTime.Remove(name);
             for (int i = 0; i < _nextHealthMessage.playerNames.Length; i++)
             {
-                if (_nextHealthMessage.playerNames[i] == name)
+                if (_nextHealthMessage.playerNames[i].Equals(name))
                 {
                     _nextHealthMessage.healths[i] = _maxHealth;
                 }
@@ -141,6 +152,8 @@ namespace CavernWars
 
             NetworkInterface.Instance.playerHitDel += OnPlayerHit;
             NetworkInterface.Instance.gameUpdateDel += OnGameUpdate;
+
+            Started = true;
         }
 
         private void OnPlayerInfo(MessageContainer container)
@@ -184,6 +197,7 @@ namespace CavernWars
         public void StartMatch()
         {
             _matchStatus = MatchStatus.WAITING;
+            Players.Find(plr => plr.IsHost).Ready = true;
         }
     }
 }

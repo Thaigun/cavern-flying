@@ -145,7 +145,8 @@ namespace CavernWars
                     }
                     break;
                 case (MessageType.HIT_MESSAGE):
-                    if (playerHitDel != null) {
+                    if (playerHitDel != null)
+                    {
                         playerHitDel(msgContainer);
                     }
                     break;

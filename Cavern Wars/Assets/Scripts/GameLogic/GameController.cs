@@ -39,7 +39,7 @@ namespace CavernWars
         private void Awake()
         {
             Enemies = new List<PlayerState>();
-            WantsToLive = true;
+            WantsToLive = spawnFromBeginning;
             Instance = this;
 
             PlayerAliveFromServer(spawnFromBeginning);

@@ -63,17 +63,20 @@ namespace CavernWars {
             _projectilesForNextMessage.Clear();
             NetworkInterface.Instance.SendToAllConnected(MessageType.GAME_UPDATE, updateMessage, NetworkInterface.Instance.UnreliableChannel, true);
 
-            PlayerHitMessage hitMessage = new PlayerHitMessage();
-            hitMessage.damages = new float[_hitsForNextMessage.Count];
-            hitMessage.hitPlayers = new string[_hitsForNextMessage.Count];
-            for (int i = 0; i < _hitsForNextMessage.Count; i++)
+            if (_hitsForNextMessage.Count > 0)
             {
-                Hit hit = _hitsForNextMessage[i];
-                hitMessage.damages[i] = hit.damage;
-                hitMessage.hitPlayers[i] = hit.targetName;
+                PlayerHitMessage hitMessage = new PlayerHitMessage();
+                hitMessage.damages = new float[_hitsForNextMessage.Count];
+                hitMessage.hitPlayers = new string[_hitsForNextMessage.Count];
+                for (int i = 0; i < _hitsForNextMessage.Count; i++)
+                {
+                    Hit hit = _hitsForNextMessage[i];
+                    hitMessage.damages[i] = hit.damage;
+                    hitMessage.hitPlayers[i] = hit.targetName;
+                }
+                _hitsForNextMessage.Clear();
+                NetworkInterface.Instance.Send(MessageType.HIT_MESSAGE, hitMessage, PartyManager.Instance.HostConnectionId, NetworkInterface.Instance.ReliableChannel);
             }
-            _hitsForNextMessage.Clear();
-            NetworkInterface.Instance.Send(MessageType.HIT_MESSAGE, hitMessage, PartyManager.Instance.HostConnectionId, NetworkInterface.Instance.ReliableChannel);
         }
 
         private void OnProjectileChange(int idArg, Vector2 positionArg, Vector2 movementArg, int despawnTypeArg)

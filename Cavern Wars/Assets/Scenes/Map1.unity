@@ -930,7 +930,6 @@ GameObject:
   - component: {fileID: 125680230}
   - component: {fileID: 125680229}
   - component: {fileID: 451808642}
-  - component: {fileID: 451808641}
   - component: {fileID: 451808644}
   - component: {fileID: 451808643}
   m_Layer: 0
@@ -940,22 +939,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &451808641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114215413971617162, guid: 1e932ab4410c2b84db9194f8d0fca31e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 451808640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae73ee7e654c301408a828ffd35fd88c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _packetsPerSecond: 15
-  _playerTransform: {fileID: 1274040643}
-  _moveWithWASD: {fileID: 125680230}
-  _shooter: {fileID: 125680229}
 --- !u!50 &451808642
 Rigidbody2D:
   serializedVersion: 4
@@ -1193,7 +1176,7 @@ MonoBehaviour:
   _helpPanel: {fileID: 1809369593}
   _player: {fileID: 451808643}
   _map: {fileID: 85876517}
-  spawnFromBeginning: 0
+  spawnFromBeginning: 1
 --- !u!4 &683644699
 Transform:
   m_ObjectHideFlags: 0
@@ -1679,6 +1662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1703483349}
   - component: {fileID: 1703483350}
+  - component: {fileID: 1703483351}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -1713,6 +1697,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 114691944344390284, guid: b24b198af0533584a94bf0d5da97493d,
     type: 2}
+--- !u!114 &1703483351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703483348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae73ee7e654c301408a828ffd35fd88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _packetsPerSecond: 15
+  _playerTransform: {fileID: 1274040643}
+  _moveWithWASD: {fileID: 125680230}
+  _shooter: {fileID: 125680229}
 --- !u!1 &1738261153
 GameObject:
   m_ObjectHideFlags: 0
