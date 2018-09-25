@@ -126,8 +126,8 @@ namespace CavernWars
                 if (_nextHealthMessage.playerNames[i].Equals(name))
                 {
                     _nextHealthMessage.healths[i] = _maxHealth;
+                    break;
                 }
-                break;
             }
         }
 
@@ -147,7 +147,7 @@ namespace CavernWars
             ResetHitMessage();
             for (int i = 0; i < _nextHealthMessage.healths.Length; i++)
             {
-                _nextHealthMessage.healths[i] = GameController.Instance.spawnFromBeginning ? _maxHealth : -1;
+                _nextHealthMessage.healths[i] = _maxHealth;
             }
 
             NetworkInterface.Instance.playerHitDel += OnPlayerHit;
