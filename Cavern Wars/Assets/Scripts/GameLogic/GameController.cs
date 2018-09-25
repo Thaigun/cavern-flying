@@ -70,7 +70,7 @@ namespace CavernWars
             do
             {
                 timeLeft = spawnTime - Time.time;
-                _helpPanel.SetText("Respawning in " + timeLeft.ToString("F0") + "seconds");
+                _helpPanel.SetText("Respawning in " + timeLeft.ToString("F1") + "seconds");
                 yield return null;
             } while (timeLeft > 0f);
             WantsToLive = true;
