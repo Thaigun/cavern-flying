@@ -22,8 +22,10 @@ namespace CavernWars
             _originalPosition = transform.position - transform.parent.position;
             _originalRotation = transform.rotation;
             _hpText = GetComponent<TMP_Text>();
-            // The ugliest hack of this game:
+            // The ugliest hack of this game, how the healthbar is implemented:
             _maxHealthLength = _hpText.text.Length;
+
+            PlayerName = GetComponentInParent<PlayerState>().NetworkPlayer.Name;
         }
 
         private void Update()
@@ -32,7 +34,7 @@ namespace CavernWars
             transform.position = transform.parent.position + _originalPosition;
         }
 
-        public string PlayerName
+        private string PlayerName
         {
             get
             {

@@ -7,9 +7,7 @@ namespace CavernWars
     public class EnemyUpdater : MonoBehaviour
     {
         [SerializeField]
-        private MoveWithNetwork _enemyPrefab;
-
-        private List<MoveWithNetwork> _enemies;
+        private PlayerState _enemyPrefab;
 
         // Use this for initialization
         void Awake()
@@ -19,28 +17,18 @@ namespace CavernWars
                 return;
             }
 
-            _enemies = new List<MoveWithNetwork>();
-
             foreach (Player player in PartyManager.Instance.Players)
             {
                 if (player.IsYou)
                 {
+                    GameController.Instance.LocalPlayer.NetworkPlayer = player;
+                    GameController.Instance.LocalPlayer.UpdateColor();
                     continue;
                 }
-                MoveWithNetwork enemy = Instantiate(_enemyPrefab, transform);
+                PlayerState enemy = Instantiate(_enemyPrefab, transform);
                 enemy.NetworkPlayer = player;
-                _enemies.Add(enemy);
-                HealthBar hpBar = enemy.GetComponentInChildren<HealthBar>(true);
-                if (hpBar)
-                {
-                    hpBar.PlayerName = player.Name;
-                    GameController.Instance.AddHealthbar(player.Name, hpBar);
-                }
-                MaterialChanger matChg = enemy.GetComponent<MaterialChanger>();
-                if (matChg != null)
-                {
-                    matChg.UpdateColor(player.Name);
-                }
+                enemy.UpdateColor();
+                GameController.Instance.Enemies.Add(enemy);
             }
 
             NetworkInterface.Instance.gameUpdateDel += OnGameUpdate;
@@ -54,7 +42,7 @@ namespace CavernWars
         private void OnGameUpdate(MessageContainer msgContainer)
         {
             GameUpdateMessage msg = msgContainer.Message as GameUpdateMessage;
-            MoveWithNetwork sender = _enemies.Find(enemy => enemy.NetworkPlayer.ConnectionId == msgContainer.ConnectionId);
+            PlayerState sender = GameController.Instance.GetEnemyWithConnectionId(msgContainer.ConnectionId);
             if (sender != null)
             {
                 sender.ApplyNewState(msg);

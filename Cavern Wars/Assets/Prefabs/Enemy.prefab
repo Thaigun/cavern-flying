@@ -94,8 +94,9 @@ GameObject:
   - component: {fileID: 4225077623219848}
   - component: {fileID: 114675006930432468}
   - component: {fileID: 60059136890893428}
+  - component: {fileID: 114691944344390284}
   m_Layer: 0
-  m_Name: EnemyShip
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,6 +581,18 @@ MonoBehaviour:
   _networkBulletPrefab: {fileID: 114886108598112006, guid: b12600ab685a93f46a09ed8cc0104f01,
     type: 2}
   _rotateTransform: {fileID: 4509486351965892}
+--- !u!114 &114691944344390284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812225309406572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24518f03c6fcd14f949fd44dc33b842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 114340324723943584}
 --- !u!114 &114866700604352148
 MonoBehaviour:
   m_ObjectHideFlags: 1

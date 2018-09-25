@@ -26,7 +26,7 @@ namespace CavernWars
             int thisPlayerIdx = 0;
             foreach (var player in orderedPlayers)
             {
-                if (player.Name == name)
+                if (player.Name.Equals(name))
                 {
                     break;
                 }

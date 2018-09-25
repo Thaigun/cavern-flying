@@ -32,7 +32,7 @@ namespace CavernWars
             ResetHitMessage();
             for (int i = 0; i < _nextHealthMessage.healths.Length; i++)
             {
-                _nextHealthMessage.healths[i] = _maxHealth;
+                _nextHealthMessage.healths[i] = -1;
             }
 
             NetworkInterface.Instance.playerHitDel += OnPlayerHit;

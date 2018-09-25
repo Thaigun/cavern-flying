@@ -11,16 +11,6 @@ namespace CavernWars
         {
             if (NetworkInterface.Instance && PartyManager.Instance)
             {
-                HealthBar playerHpBar = GameController.Instance.Player.GetComponentInChildren<HealthBar>();
-                GameController.Instance.AddHealthbar(PartyManager.Instance.YourName, playerHpBar);
-                playerHpBar.PlayerName = PartyManager.Instance.YourName;
-
-                var matChanger = GameController.Instance.Player.GetComponent<MaterialChanger>();
-                if (matChanger != null)
-                {
-                    matChanger.UpdateColor(playerHpBar.PlayerName);
-                }
-
                 NetworkInterface.Instance.playerHealthDel += UpdatePlayersHealth;
             }
         }
@@ -30,13 +20,24 @@ namespace CavernWars
             PlayersHealthMessage healthMessage = msgContainer.Message as PlayersHealthMessage;
             for (int i = 0; i < healthMessage.healths.Length; i++)
             {
-                HealthBar healthBar;
-                if (GameController.Instance.Healthbars.TryGetValue(healthMessage.playerNames[i], out healthBar))
+                PlayerState updatePlr = GameController.Instance.GetPlayerWithName(healthMessage.playerNames[i]);
+                if (updatePlr == null)
                 {
-                    healthBar.SetHealth(healthMessage.healths[i], healthMessage.maxHealth);
+                    continue;
                 }
-
-                if (healthMessage.playerNames[i].Equals(PartyManager.Instance.YourName))
+                updatePlr.HPBar.SetHealth(healthMessage.healths[i], healthMessage.maxHealth);
+                if (!updatePlr.NetworkPlayer.IsYou)
+                { 
+                    if (healthMessage.healths[i] <= 0)
+                    {
+                        updatePlr.Despawn();
+                    }
+                    else
+                    {
+                        updatePlr.Spawn();
+                    }
+                }
+                else
                 {
                     GameController.Instance.PlayerAliveFromServer(healthMessage.healths[i] > 0f);
                 }

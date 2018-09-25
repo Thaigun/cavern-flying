@@ -71,7 +71,7 @@ namespace CavernWars
             {
                 if (GlobalEvents.projectileHitDel != null)
                 {
-                    GlobalEvents.projectileHitDel(collider.GetComponent<MoveWithNetwork>().NetworkPlayer.Name, _damage);
+                    GlobalEvents.projectileHitDel(collider.GetComponent<PlayerState>().NetworkPlayer.Name, _damage);
                 }
             }
         }

@@ -642,7 +642,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205130313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0569973, y: 1.9227138, z: -4.988144}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -946,6 +946,7 @@ GameObject:
   - component: {fileID: 451808642}
   - component: {fileID: 451808641}
   - component: {fileID: 451808644}
+  - component: {fileID: 451808643}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -990,6 +991,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &451808643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 451808640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24518f03c6fcd14f949fd44dc33b842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 160730305}
 --- !u!60 &451808644
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1193,7 +1206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _host: {fileID: 1419320481}
   _helpPanel: {fileID: 1809369593}
-  _player: {fileID: 451808640}
+  _player: {fileID: 451808643}
   _map: {fileID: 85876517}
 --- !u!4 &683644699
 Transform:
@@ -1711,8 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1f3001d9c0f8f488cd04675220d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 114675006930432468, guid: b24b198af0533584a94bf0d5da97493d,
-    type: 2}
+  _enemyPrefab: {fileID: 0}
 --- !u!1 &1738261153
 GameObject:
   m_ObjectHideFlags: 0

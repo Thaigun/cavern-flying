@@ -16,9 +16,7 @@ namespace CavernWars
         private Transform _rotateTransform;
 
         private List<NetworkBullet> _bullets;
-
-        public Player NetworkPlayer { get; set; }
-
+        
         void Update()
         {
 
@@ -36,8 +34,6 @@ namespace CavernWars
         public void ApplyNewState(GameUpdateMessage msg)
         {
             // TODO: Interpolate or extrapolate to make the movement smooth
-
-            gameObject.SetActive(msg.alive);
 
             transform.position = msg.position;
             _rotateTransform.rotation = msg.rotation;
