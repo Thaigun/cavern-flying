@@ -136,7 +136,7 @@ namespace CavernWars
             ResetHitMessage();
             for (int i = 0; i < _nextHealthMessage.healths.Length; i++)
             {
-                _nextHealthMessage.healths[i] = _maxHealth;//-1;
+                _nextHealthMessage.healths[i] = GameController.Instance.spawnFromBeginning ? _maxHealth : -1;
             }
 
             NetworkInterface.Instance.playerHitDel += OnPlayerHit;

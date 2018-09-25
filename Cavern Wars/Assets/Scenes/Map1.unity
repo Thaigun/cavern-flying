@@ -1190,10 +1190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2cdffb9c239f749af2d1ea4c849ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _host: {fileID: 0}
   _helpPanel: {fileID: 1809369593}
   _player: {fileID: 451808643}
   _map: {fileID: 85876517}
+  spawnFromBeginning: 0
 --- !u!4 &683644699
 Transform:
   m_ObjectHideFlags: 0

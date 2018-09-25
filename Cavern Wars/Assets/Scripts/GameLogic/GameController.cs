@@ -16,6 +16,8 @@ namespace CavernWars
         [SerializeField]
         private Map _map;
         
+        public bool spawnFromBeginning;
+        
         public List<PlayerState> Enemies { get; private set; }
 
         public PlayerState LocalPlayer { get { return _player; } }
@@ -40,7 +42,7 @@ namespace CavernWars
             WantsToLive = true;
             Instance = this;
 
-            //PlayerAliveFromServer(false);
+            PlayerAliveFromServer(spawnFromBeginning);
         }
 
         private void Update()
@@ -52,6 +54,7 @@ namespace CavernWars
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                PartyManager.Instance.CloseParty();
                 SceneManager.LoadScene(0);
             }
         }

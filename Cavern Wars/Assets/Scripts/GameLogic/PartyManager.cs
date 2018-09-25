@@ -232,8 +232,11 @@ namespace CavernWars
 
         public void CloseParty()
         {
-            _network.CloseConnections();
-            ResetParty();
+            if (_network)
+            {
+                _network.CloseConnections();
+                ResetParty();
+            }
         }
 
         public void LoadMatchScene(int map)
