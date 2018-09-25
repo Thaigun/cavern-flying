@@ -61,7 +61,7 @@ namespace CavernWars {
             updateMessage.alive = GameController.Instance.WantsToLive;
             updateMessage.projectileChanges = _projectilesForNextMessage.ToArray();
             _projectilesForNextMessage.Clear();
-            NetworkInterface.Instance.SendToAllConnected(MessageType.GAME_UPDATE, updateMessage, NetworkInterface.Instance.UnreliableChannel);
+            NetworkInterface.Instance.SendToAllConnected(MessageType.GAME_UPDATE, updateMessage, NetworkInterface.Instance.UnreliableChannel, true);
 
             PlayerHitMessage hitMessage = new PlayerHitMessage();
             hitMessage.damages = new float[_hitsForNextMessage.Count];

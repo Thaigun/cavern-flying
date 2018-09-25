@@ -23,18 +23,51 @@ namespace CavernWars
         [SerializeField]
         private TMP_InputField _nameInput;
 
-        [SerializeField, Tooltip("Which map is to be loaded when the game starts.")]
+        [SerializeField]
+        private MatchHost _host;
+        
         private int _map = 1;
 
         private NetworkInterface _network;
+        private List<Player> _players;
 
         public static PartyManager Instance { get; private set; }
         
-        public bool IsHost { get; set; }
+        public bool IsHost
+        {
+            get
+            {
+                return _host.gameObject.activeSelf;
+            }
+            set
+            {
+                _host.gameObject.SetActive(value);
+            }
+        }
+
+        public MatchHost Host { get { return _host; } }
+
         // Connection id to the host of the game.
         public int HostConnectionId { get; private set; }
         public MatchStatus PartyStatus { get; private set; }
-        public List<Player> Players { get; private set; }
+        public List<Player> Players
+        {
+            get
+            {
+                if (IsHost)
+                {
+                    return Host.Players;
+                }
+                else
+                {
+                    if (_players == null)
+                    {
+                        _players = new List<Player>();
+                    }
+                    return _players;
+                }
+            }
+        }
         public string YourName { get; private set; }
         public int Map { get; private set; }
 
@@ -57,29 +90,14 @@ namespace CavernWars
             _network.connectionResponseDel += OnConnectionResponse;
             _network.disconnectDel += OnDisconnect;
             _network.lobbyUpdateDel += OnLobbyUpdate;
-            _network.playerInfoDel += OnPlayerInfo;
             _network.matchStatusDel += OnMatchStatus;
-
-            Players = new List<Player>();
 
             ResetParty();
         }
 
         private void Update()
         {
-            if (PartyStatus == MatchStatus.WAITING)
-            {
-                if (IsHost && Players.All(plr => plr.Ready))
-                {
-                    MatchStatusMessage statusMsg = new MatchStatusMessage()
-                    {
-                        matchStatus = (int)MatchStatus.IN_PROGRESS
-                    };
-                    _network.SendToAllConnected(MessageType.MATCH_STATUS, statusMsg);
-                    PartyStatus = MatchStatus.IN_PROGRESS;
-                    CancelInvoke("SendLobbyUpdate");
-                }
-            }
+            
         }
 
         private void OnDestroy()
@@ -109,9 +127,11 @@ namespace CavernWars
             for (int i = 0; i < lobbyMsg.players.Length; i++)
             {
                 LobbyPlayerInfo msgPlr = lobbyMsg.players[i];
+                // Host's party manager uses the player list of the host.
                 if (!Players.Any(plr => plr.Name.Equals(msgPlr.name)))
                 {
-                    int connectionId = msgPlr.isHost ? HostConnectionId : -1;
+                    // For players other than host, this will be updated when connecting them in the beginning of the match.
+                    int connectionId = HostConnectionId;
                     Players.Add(new Player(msgPlr.name, msgPlr.ip, msgPlr.port, connectionId, msgPlr.isHost, msgPlr.name.Equals(YourName)));
                 }
             }
@@ -136,26 +156,6 @@ namespace CavernWars
                 {
                     LoadMatchScene(lobbyMsg.map);
                 }
-            }
-        }
-
-        private void OnPlayerInfo(MessageContainer container)
-        {
-            if (!IsHost)
-            {
-                return;
-            }
-
-            // If the player has not been added yet, do it now.
-            PlayerInfoMessage plrInfo = container.Message as PlayerInfoMessage;
-            if (!Players.Any(plr => plr.Name.Equals(plrInfo.name)))
-            {
-                int port;
-                string address = _network.GetConnectionIp(container.ConnectionId, out port);
-                Players.Add(new Player(plrInfo.name, address, port, container.ConnectionId, false, false));
-                _lobbyPlayerList.UpdateAllPlayers(Players);
-                // The update is sent every second anyway, no need to send it separately here.
-                return;
             }
         }
 
@@ -225,43 +225,10 @@ namespace CavernWars
 
         public void StartHosting(string yourName)
         {
-            _network.OpenSocket();
             IsHost = true;
-            InvokeRepeating("SendLobbyUpdate", 1f, 1f);
-            YourName = yourName;
-            Players.Add(new Player(YourName, "", -1, -1, true, true));
-            _lobbyPlayerList.UpdateAllPlayers(Players);
-        }
 
-        public void StartMatch()
-        {
-            PartyStatus = MatchStatus.WAITING;
-            LoadMatchScene(_map); // TODO: option to switch between maps.
-        }
-
-        public void SendLobbyUpdate()
-        {
-            LobbyUpdateMessage lobbyMsg = new LobbyUpdateMessage();
-            if (PartyStatus == MatchStatus.LOBBY)
-            {
-                lobbyMsg.map = -1;
-            }
-            else if (PartyStatus == MatchStatus.WAITING)
-            {
-                lobbyMsg.map = _map;
-            }
-            else
-            {
-                return;
-            }
-            lobbyMsg.players = new LobbyPlayerInfo[Players.Count];
-            for (int i = 0; i < Players.Count; i++)
-            {
-                lobbyMsg.players[i] = new LobbyPlayerInfo(Players[i]);
-            }
-
-            _network.SendToAllConnected(MessageType.LOBBY_UPDATE, lobbyMsg);
-        }
+            JoinLobby("local", -1, yourName);
+        }       
 
         public void CloseParty()
         {

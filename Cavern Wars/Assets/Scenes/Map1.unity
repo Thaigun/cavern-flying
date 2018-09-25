@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2cdffb9c239f749af2d1ea4c849ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _host: {fileID: 1419320481}
+  _host: {fileID: 0}
   _helpPanel: {fileID: 1809369593}
   _player: {fileID: 451808643}
   _map: {fileID: 85876517}
@@ -1642,49 +1642,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1419320480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1419320482}
-  - component: {fileID: 1419320481}
-  m_Layer: 0
-  m_Name: Host
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1419320481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1419320480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb57deb23e0b0f4bb7eff6f783f31b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _packetsPerSecond: 15
-  _maxHealth: 100
-  _deathTime: 3
---- !u!4 &1419320482
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1419320480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9610765, y: -0.88885295, z: 0.44995308}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1693939375
 GameObject:
   m_ObjectHideFlags: 0

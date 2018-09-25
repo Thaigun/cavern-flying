@@ -34,7 +34,7 @@ namespace CavernWars
 
         public void StartGameClicked()
         {
-            PartyManager.Instance.StartMatch();
+            PartyManager.Instance.Host.StartMatch();
         }
 
         public void CancelLobbyClicked()
@@ -46,7 +46,5 @@ namespace CavernWars
         {
             Application.Quit();
         }
-
-        
     }
 }

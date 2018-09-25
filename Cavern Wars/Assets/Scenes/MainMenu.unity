@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lobbyPlayerList: {fileID: 2080615678}
   _nameInput: {fileID: 1628667362}
+  _host: {fileID: 2060274487}
   _map: 1
 --- !u!1 &59546912
 GameObject:
@@ -3539,7 +3540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2060274486
 Transform:
   m_ObjectHideFlags: 0

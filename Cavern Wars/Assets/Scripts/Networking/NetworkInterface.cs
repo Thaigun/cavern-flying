@@ -115,7 +115,6 @@ namespace CavernWars
             switch (msgContainer.MsgType)
             {
                 case (MessageType.GAME_UPDATE):
-                    Log("Received game update");
                     if (gameUpdateDel != null)
                     {
                         gameUpdateDel(msgContainer);
@@ -169,11 +168,6 @@ namespace CavernWars
                     connectionResponseDel(connectionId);
                 }
                 WaitingConnectionIds.Remove(connectionId);
-            }
-            // In case of a host, who receives connections
-            else
-            {
-
             }
             ConnectionIds.Add(connectionId);
         }
@@ -239,14 +233,6 @@ namespace CavernWars
             _networkTransportStarted = false;
         }
 
-        private void Log(string logMsg)
-        {
-            if (_logAll)
-            {
-                Debug.Log(logMsg);
-            }
-        }
-
         public void OpenSocket()
         {
             InitNetworkTransport();
@@ -259,9 +245,22 @@ namespace CavernWars
 
         public int ConnectToIP(string ip, int port)
         {
+            
             byte error;
-            int connectionId = NetworkTransport.Connect(_hostId, ip, port, 0, out error);
-            NetworkError err = (NetworkError)error;
+            NetworkError err;
+            int connectionId;
+            if (ip.Equals("local"))
+            {
+                StartCoroutine(DelayedConnectionResponse(-1));
+                connectionId = -1;
+                err = NetworkError.Ok;
+            }
+            else
+            {
+                connectionId = NetworkTransport.Connect(_hostId, ip, port, 0, out error);
+                err = (NetworkError)error;
+            }
+
             if (err == NetworkError.Ok)
             {
                 WaitingConnectionIds.Add(connectionId);
@@ -269,11 +268,25 @@ namespace CavernWars
             return connectionId;
         }
 
-        public void SendToAllConnected(MessageType msgType, MessageBase msg, int channelId = -1)
+        private IEnumerator DelayedConnectionResponse(int connId)
+        {
+            yield return null;
+            if (this.connectionResponseDel != null)
+            {
+                OnConnect(connId);
+                this.connectionResponseDel(connId);
+            }
+        }
+
+        public void SendToAllConnected(MessageType msgType, MessageBase msg, int channelId = -1, bool excludeSelf = false)
         {
             if (channelId == -1) { channelId = ReliableChannel; }
             foreach (int connId in ConnectionIds)
             {
+                if (connId == -1 && excludeSelf)
+                {
+                    continue;
+                }
                 Send(msgType, msg, connId, channelId);
             }
         }
@@ -287,9 +300,16 @@ namespace CavernWars
             writer.FinishMessage();
             byte[] byteMsg = writer.ToArray();
             byte error;
-            NetworkTransport.Send(_hostId, connectionId, channelId, byteMsg, byteMsg.Length, out error);
-            NetworkError err = (NetworkError)error;
-            Log("Sent message");
+            // If to local
+            if (connectionId == -1)
+            {
+                OnData(byteMsg, _hostId, -1);
+            }
+            else
+            {
+                NetworkTransport.Send(_hostId, connectionId, channelId, byteMsg, byteMsg.Length, out error);
+                NetworkError err = (NetworkError)error;
+            }
         }
 
         public void CloseConnections()
@@ -323,6 +343,12 @@ namespace CavernWars
 
         public string GetConnectionIp(int connectionId, out int port)
         {
+            if (connectionId == -1)
+            {
+                port = -1;
+                return "local";
+            }
+
             NetworkID networkId;
             NodeID nodeId;
             byte error;
@@ -333,7 +359,7 @@ namespace CavernWars
             var err = (NetworkError)error;
             if (err != NetworkError.Ok)
             {
-                throw new System.Exception("Error with getting connection info");
+                throw new System.Exception("Error with getting connection info: " + err);
             }
             return address;
         }

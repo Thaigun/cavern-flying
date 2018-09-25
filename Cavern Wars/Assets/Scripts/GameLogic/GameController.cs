@@ -8,9 +8,6 @@ namespace CavernWars
     class GameController : MonoBehaviour
     {
         [SerializeField]
-        private MatchHost _host;
-
-        [SerializeField]
         private HelpPanel _helpPanel;
 
         [SerializeField]
@@ -42,10 +39,6 @@ namespace CavernWars
             Enemies = new List<PlayerState>();
             WantsToLive = true;
             Instance = this;
-            if (PartyManager.Instance && PartyManager.Instance.IsHost)
-            {
-                _host.gameObject.SetActive(true);
-            }
 
             //PlayerAliveFromServer(false);
         }
@@ -99,7 +92,7 @@ namespace CavernWars
             do
             {
                 timeLeft = spawnTime - Time.time;
-                _helpPanel.SetText("Respawning in " + timeLeft.ToString("F1") + "seconds");
+                _helpPanel.SetText("Respawning in " + timeLeft.ToString("F1") + " seconds");
                 yield return null;
             } while (timeLeft > 0f);
             WantsToLive = true;
