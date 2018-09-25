@@ -47,7 +47,7 @@ namespace CavernWars
                 _host.gameObject.SetActive(true);
             }
 
-            PlayerAliveFromServer(false);
+            //PlayerAliveFromServer(false);
         }
 
         private void Update()

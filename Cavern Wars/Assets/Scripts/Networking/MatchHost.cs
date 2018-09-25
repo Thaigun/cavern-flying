@@ -8,6 +8,8 @@ namespace CavernWars
 {
     public class MatchHost : MonoBehaviour
     {
+        // TODO: Refactor this whole class
+
         [SerializeField]
         private float _packetsPerSecond = 15f;
 
@@ -32,7 +34,7 @@ namespace CavernWars
             ResetHitMessage();
             for (int i = 0; i < _nextHealthMessage.healths.Length; i++)
             {
-                _nextHealthMessage.healths[i] = -1;
+                _nextHealthMessage.healths[i] = _maxHealth;//-1;
             }
 
             NetworkInterface.Instance.playerHitDel += OnPlayerHit;
@@ -58,7 +60,7 @@ namespace CavernWars
                     if (hitMessage.hitPlayers[i] == _nextHealthMessage.playerNames[i])
                     {
                         _nextHealthMessage.healths[j] -= hitMessage.damages[i];
-                        if (_nextHealthMessage.healths[j] <= 0f)
+                        if (_nextHealthMessage.healths[j] <= 0f && !_playerDeathTime.ContainsKey(_nextHealthMessage.playerNames[j]))
                         {
                             _playerDeathTime.Add(_nextHealthMessage.playerNames[j], Time.time);
                         }
