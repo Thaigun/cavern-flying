@@ -22,7 +22,7 @@ public class HeadTowardsMovement : MonoBehaviour
     void FixedUpdate ()
     {
         _directionOfMovement = transform.position - _previousPosition;
-        if (!Vector3.zero.Equals(_directionOfMovement))
+        if (_directionOfMovement.sqrMagnitude > 0.001f)
         {
             var lookRot = Quaternion.LookRotation(_directionOfMovement, Vector3.back);
             var rotation = Quaternion.RotateTowards(transform.rotation, lookRot, _rotationSpeed);

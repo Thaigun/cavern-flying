@@ -22,6 +22,9 @@ namespace CavernWars
         [SerializeField, Tooltip("Which map is to be loaded when the game starts.")]
         private int _map = 1;
 
+        [SerializeField, Tooltip("Update the same value to GameController.")]
+        private bool _spawnFromBeginning;
+
         private float _packetInterval;
         private float _lastPacketTime;
         private MatchStatus _matchStatus;
@@ -177,9 +180,15 @@ namespace CavernWars
             _playerDeathTime = new Dictionary<string, float>();
             ResetHitMessage();
             ResetScoreMessage();
+
             for (int i = 0; i < _nextHealthMessage.healths.Length; i++)
             {
-                _nextHealthMessage.healths[i] = _maxHealth;
+                _nextHealthMessage.healths[i] = _spawnFromBeginning ? _maxHealth : 0f;
+                // If not spawn from beginning, add players to the death time dictionary to allow respawning them elsewhere in the code.
+                if (!_spawnFromBeginning)
+                {
+                    _playerDeathTime.Add(_nextHealthMessage.playerNames[i], Time.time - _deathTime);
+                }
             }
 
             NetworkInterface.Instance.playerHitDel += OnPlayerHit;

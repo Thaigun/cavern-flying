@@ -73,6 +73,11 @@ namespace CavernWars
                 {
                     GlobalEvents.projectileHitDel(collider.GetComponent<PlayerState>().NetworkPlayer.Name, _damage);
                 }
+                DespawnBullet(Id, BulletDespawnType.BIG_HIT);
+            }
+            else if (collider.CompareTag("Wall"))
+            {
+                DespawnBullet(Id, BulletDespawnType.SMALL_HIT);
             }
         }
 
@@ -90,15 +95,17 @@ namespace CavernWars
 
             if (type == BulletDespawnType.SMALL_HIT)
             {
+                AudioManager.Instance.PlayClip(AudioManager.Instance.wallHit, false);
                 var explosion = Instantiate(_smallExplosionPrefab, transform.position, _smallExplosionPrefab.transform.rotation);
                 Destroy(explosion, 1f);
             }
             else if (type == BulletDespawnType.BIG_HIT)
             {
-                // TODO: Implement big boom boom.
+                AudioManager.Instance.PlayClip(AudioManager.Instance.shipHit, false);
+                var explosion = Instantiate(_smallExplosionPrefab, transform.position, _smallExplosionPrefab.transform.rotation);
+                Destroy(explosion, 1f);
             }
-
-
+            
             Destroy(this.gameObject);
         }
     }

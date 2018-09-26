@@ -29,6 +29,11 @@ namespace CavernWars
                 enemy.NetworkPlayer = player;
                 enemy.UpdateColor();
                 GameController.Instance.Enemies.Add(enemy);
+
+                if (!GameController.Instance.spawnFromBeginning)
+                {
+                    enemy.gameObject.SetActive(false);
+                }
             }
 
             NetworkInterface.Instance.gameUpdateDel += OnGameUpdate;

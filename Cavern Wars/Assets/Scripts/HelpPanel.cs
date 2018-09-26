@@ -3,31 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HelpPanel : MonoBehaviour
+namespace CavernWars
 {
-    [SerializeField]
-    private GameObject _panel;
-
-    [SerializeField]
-    private Text _helpText;
-
-    public bool Active { get; private set; }
-
-	public void Show(string text = "")
+    public class HelpPanel : MonoBehaviour
     {
-        _panel.SetActive(true);
-        SetText(text);
-        Active = true;
-    }
+        [SerializeField]
+        private GameObject _panel;
 
-    public void Hide()
-    {
-        _panel.SetActive(false);
-        Active = false;
-    }
+        [SerializeField]
+        private Text _helpText;
 
-    public void SetText(string text)
-    {
-        _helpText.text = text;
+        public bool Active { get; private set; }
+
+        private void Start()
+        {
+        }
+
+        public void Show(string text = "")
+        {
+            _panel.SetActive(true);
+            SetText(text);
+            Active = true;
+        }
+
+        public void Hide()
+        {
+            _panel.SetActive(false);
+            Active = false;
+        }
+
+        public void SetText(string text)
+        {
+            _helpText.text = text;
+        }
     }
 }

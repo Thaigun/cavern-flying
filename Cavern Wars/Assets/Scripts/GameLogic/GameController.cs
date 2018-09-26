@@ -38,6 +38,8 @@ namespace CavernWars
 
         private void Awake()
         {
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.battleMusic, true);
+
             Enemies = new List<PlayerState>();
             WantsToLive = spawnFromBeginning;
             Instance = this;

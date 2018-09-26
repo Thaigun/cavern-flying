@@ -26,7 +26,7 @@ namespace CavernWars
         private Queue<Quaternion> _rotationBuffer;
         private bool _interPolationInProgress;
 
-        private void Start()
+        private void Awake()
         {
             _bullets = new List<NetworkBullet>();
             _bufferReceiveTimes = new Queue<float>();
@@ -96,6 +96,7 @@ namespace CavernWars
                 NetworkBullet netBullet = _bullets.Find(netBul => netBul.Id == bulletInfo.id);
                 if (netBullet == null)
                 {
+                    AudioManager.Instance.PlayClip(AudioManager.Instance.shot, false);
                     netBullet = Instantiate(_networkBulletPrefab, bulletInfo.position, Quaternion.identity);
                     _bullets.Add(netBullet);
                 }

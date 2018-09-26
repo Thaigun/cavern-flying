@@ -48,6 +48,8 @@ namespace CavernWars
                 bullet.Id = ++_bulletIdStepper;
 
                 GlobalEvents.projectileChangeDel(bullet.Id, bullet.RigidbodyComponent.position, bullet.RigidbodyComponent.velocity, (int)BulletDespawnType.NONE);
+
+                AudioManager.Instance.PlayClip(AudioManager.Instance.shot, false);
             }
         }
     }

@@ -7,6 +7,9 @@ public class MoveWithWASD : MonoBehaviour
     [SerializeField]
     private float _thrustForce = 1f;
 
+    [SerializeField]
+    private Engine _engines;
+
     private Rigidbody2D _rigidBody;
 
     private float ThrustForce { get { return _thrustForce; } }
@@ -39,9 +42,15 @@ public class MoveWithWASD : MonoBehaviour
             steerDirection += Vector3.right;
         }
 
-        EnginesOn = steerDirection.sqrMagnitude > 0.001f;
+        SetEngines(steerDirection.sqrMagnitude > 0.001f);
 
         Vector3 accel = steerDirection.normalized * ThrustForce;
         _rigidBody.AddForce(accel);
+    }
+
+    void SetEngines(bool on)
+    {
+        EnginesOn = on;
+        _engines.SetEnginesActive(on);
     }
 }

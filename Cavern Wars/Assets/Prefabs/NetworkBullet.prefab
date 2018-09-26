@@ -122,7 +122,7 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0a5858e7315e5874bb389607a6c0dd15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.12857056
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -218,3 +218,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c83e131e8187104f88e79696104d2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _smallExplosionPrefab: {fileID: 117196, guid: 1031ff2c9b4cd804cbfaf934a2106e25,
+    type: 2}

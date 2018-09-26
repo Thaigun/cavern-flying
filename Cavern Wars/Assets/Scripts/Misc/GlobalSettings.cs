@@ -7,6 +7,5 @@ namespace CavernWars
 {
     public static class GlobalSettings
     {
-
     }
 }
