@@ -202,7 +202,6 @@ MonoBehaviour:
   _lobbyPlayerList: {fileID: 2080615678}
   _nameInput: {fileID: 1628667362}
   _host: {fileID: 2060274487}
-  _map: 1
 --- !u!1 &59546912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,6 +3567,7 @@ MonoBehaviour:
   _packetsPerSecond: 15
   _maxHealth: 100
   _deathTime: 3
+  _map: 1
 --- !u!1 &2062245701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: -40.1}
+  m_AnchoredPosition: {x: 0, y: 19.7}
   m_SizeDelta: {x: 382.1, y: 428.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080615677

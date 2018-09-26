@@ -13,7 +13,8 @@ namespace CavernWars
         GAME_UPDATE,
         PLAYER_INFO,
         HIT_MESSAGE,
-        HEALTH_MESSAGE
+        HEALTH_MESSAGE,
+        SCORE_MESSAGE
     }
 }
 

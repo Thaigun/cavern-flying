@@ -27,6 +27,8 @@ namespace CavernWars
         private MatchStatus _matchStatus;
 
         private PlayersHealthMessage _nextHealthMessage;
+        private ScoreMessage _nextScoreMessage;
+
         private Dictionary<string, float> _playerDeathTime;
         private bool Started { get; set; }
 
@@ -35,6 +37,7 @@ namespace CavernWars
         private void Start()
         {
             Players = new List<Player>();
+            _nextScoreMessage = new ScoreMessage();
 
             _matchStatus = MatchStatus.LOBBY;
             InvokeRepeating("SendLobbyUpdate", 1f, 1f);
@@ -81,9 +84,9 @@ namespace CavernWars
                     if (hitMessage.hitPlayers[i].Equals(_nextHealthMessage.playerNames[j]))
                     {
                         _nextHealthMessage.healths[j] -= hitMessage.damages[i];
-                        if (_nextHealthMessage.healths[j] <= 0f && !_playerDeathTime.ContainsKey(_nextHealthMessage.playerNames[j]))
+                        if (_nextHealthMessage.healths[j] <= 0f)
                         {
-                            _playerDeathTime.Add(_nextHealthMessage.playerNames[j], Time.time);
+                            PlayerDead(GetPlayerWithConnectionId(msgContainer.ConnectionId), GetPlayerWithName(_nextHealthMessage.playerNames[j]));
                         }
                         break;
                     }
@@ -118,6 +121,26 @@ namespace CavernWars
             }
         }
 
+        void PlayerDead(Player killerName, Player killedName)
+        {
+            if (!_playerDeathTime.ContainsKey(killedName.Name))
+            {
+                _playerDeathTime.Add(killedName.Name, Time.time);
+                for (int i = 0; i < _nextScoreMessage.playerNames.Length; i++)
+                {
+                    if (_nextScoreMessage.playerNames[i].Equals(killedName.Name))
+                    {
+                        _nextScoreMessage.deaths[i]++;
+                    }
+                    else if (_nextScoreMessage.playerNames[i].Equals(killerName.Name))
+                    {
+                        _nextScoreMessage.kills[i]++;
+                    }
+                }
+                NetworkInterface.Instance.SendToAllConnected(MessageType.SCORE_MESSAGE, _nextScoreMessage);
+            }
+        }
+
         void AllowPlayerSpawn(string name)
         {
             _playerDeathTime.Remove(name);
@@ -135,8 +158,16 @@ namespace CavernWars
         {
             _nextHealthMessage = new PlayersHealthMessage();
             _nextHealthMessage.maxHealth = _maxHealth;
-            _nextHealthMessage.playerNames = PartyManager.Instance.Players.Select(player => player.Name).ToArray();
+            _nextHealthMessage.playerNames = Players.Select(player => player.Name).ToArray();
             _nextHealthMessage.healths = new float[_nextHealthMessage.playerNames.Length];
+        }
+
+        private void ResetScoreMessage()
+        {
+            _nextScoreMessage = new ScoreMessage();
+            _nextScoreMessage.playerNames = Players.Select(player => player.Name).ToArray();
+            _nextScoreMessage.kills = new int[_nextScoreMessage.playerNames.Length];
+            _nextScoreMessage.deaths = new int[_nextScoreMessage.playerNames.Length];
         }
 
         private void PrepareForMatchStart()
@@ -145,6 +176,7 @@ namespace CavernWars
             _packetInterval = 1f / _packetsPerSecond;
             _playerDeathTime = new Dictionary<string, float>();
             ResetHitMessage();
+            ResetScoreMessage();
             for (int i = 0; i < _nextHealthMessage.healths.Length; i++)
             {
                 _nextHealthMessage.healths[i] = _maxHealth;
@@ -198,6 +230,16 @@ namespace CavernWars
         {
             _matchStatus = MatchStatus.WAITING;
             Players.Find(plr => plr.IsHost).Ready = true;
+        }
+
+        public Player GetPlayerWithName(string name)
+        {
+            return Players.Find(p => p.Name.Equals(name));
+        }
+
+        public Player GetPlayerWithConnectionId(int id)
+        {
+            return Players.Find(p => p.ConnectionId == id);
         }
     }
 }
