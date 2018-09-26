@@ -36,9 +36,16 @@ namespace CavernWars
 
         void Update()
         {
-            if (!_interPolationInProgress && _bufferReceiveTimes.Count >= _bufferSize)
+            // TODO: Interpolate to make the movement smooth
+            /*if (!_interPolationInProgress && _bufferReceiveTimes.Count >= _bufferSize)
             {
                 StartCoroutine(InterpolateMovement());
+            }*/
+            if (_bufferReceiveTimes.Count > 0)
+            {
+                _bufferReceiveTimes.Dequeue();
+                transform.position = _positionBuffer.Dequeue();
+                _rotateTransform.rotation = _rotationBuffer.Dequeue();
             }
         }
 
@@ -77,7 +84,6 @@ namespace CavernWars
         /// </summary>
         public void ApplyNewState(GameUpdateMessage msg)
         {
-            // TODO: Interpolate to make the movement smooth
             _positionBuffer.Enqueue(msg.position);
             _rotationBuffer.Enqueue(msg.rotation);
             _bufferReceiveTimes.Enqueue(Time.time);
