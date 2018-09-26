@@ -34,16 +34,23 @@ namespace CavernWars
             _positionBuffer = new Queue<Vector3>();
             _rotationBuffer = new Queue<Quaternion>();
 
-            //_justWokeUp = 
+            _justWokeUp = true;
         }
 
         void Update()
         {
-            if (_bufferReceiveTimes.Count > 0)
+            if (_bufferReceiveTimes.Count >= 2 && !_interPolationInProgress)
             {
-                _bufferReceiveTimes.Dequeue();
-                transform.position = _positionBuffer.Dequeue();
-                _rotateTransform.rotation = _rotationBuffer.Dequeue();
+                if (_justWokeUp)
+                {
+                    _justWokeUp = false;
+                    transform.position = _positionBuffer.Peek();
+                    _rotateTransform.rotation = _rotationBuffer.Peek();
+                }
+                else
+                {
+                    StartCoroutine(InterpolateMovement());
+                }
             }
         }
 
@@ -58,8 +65,10 @@ namespace CavernWars
             do
             {
                 startTime = _bufferReceiveTimes.Dequeue();
-                startPos = _positionBuffer.Dequeue();
-                startRot = _rotationBuffer.Dequeue();
+                _positionBuffer.Dequeue();
+                _rotationBuffer.Dequeue();
+                startPos = transform.position;
+                startRot = _rotateTransform.rotation;
 
                 endTime = _bufferReceiveTimes.Peek();
                 endPos = _positionBuffer.Peek();
@@ -67,11 +76,11 @@ namespace CavernWars
 
                 timePortion = (Time.time - startTime) / (endTime - startTime);
 
-                _rotateTransform.rotation = Quaternion.Lerp(startRot, endRot, timePortion);
-                transform.position = Vector3.Lerp(startPos, endPos, timePortion);
+                _rotateTransform.rotation = Quaternion.LerpUnclamped(startRot, endRot, timePortion);
+                transform.position = Vector3.LerpUnclamped(startPos, endPos, timePortion);
 
                 yield return null;
-            } while (timePortion < 1);
+            } while (_bufferReceiveTimes.Count < 2 && timePortion < 5);
 
             _interPolationInProgress = false;
         }

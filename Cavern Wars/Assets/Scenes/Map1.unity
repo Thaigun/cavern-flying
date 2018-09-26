@@ -3672,7 +3672,6 @@ GameObject:
   - component: {fileID: 613530672}
   - component: {fileID: 613530675}
   - component: {fileID: 613530674}
-  - component: {fileID: 613530673}
   m_Layer: 0
   m_Name: SFP_ring
   m_TagString: Untagged
@@ -3694,21 +3693,6 @@ Transform:
   m_Father: {fileID: 938625040}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &613530673
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64395165217205850, guid: 96c47358c453557479cd659c7883aa1f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 613530671}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: 8a00d3675b704b24a945c12edcc8c492, type: 3}
 --- !u!23 &613530674
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4975,7 +4959,6 @@ GameObject:
   - component: {fileID: 808099899}
   - component: {fileID: 808099902}
   - component: {fileID: 808099901}
-  - component: {fileID: 808099900}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -4997,21 +4980,6 @@ Transform:
   m_Father: {fileID: 1511871636}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &808099900
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 808099898}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &808099901
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5308,7 +5276,6 @@ GameObject:
   - component: {fileID: 878725265}
   - component: {fileID: 878725268}
   - component: {fileID: 878725267}
-  - component: {fileID: 878725266}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -5330,21 +5297,6 @@ Transform:
   m_Father: {fileID: 431709940}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &878725266
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 878725264}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &878725267
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14837,7 +14789,6 @@ GameObject:
   - component: {fileID: 1731273797}
   - component: {fileID: 1731273800}
   - component: {fileID: 1731273799}
-  - component: {fileID: 1731273798}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -14859,21 +14810,6 @@ Transform:
   m_Father: {fileID: 411479562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &1731273798
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1731273796}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &1731273799
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15053,7 +14989,6 @@ GameObject:
   - component: {fileID: 1734536994}
   - component: {fileID: 1734536997}
   - component: {fileID: 1734536996}
-  - component: {fileID: 1734536995}
   m_Layer: 0
   m_Name: SFP_hexagon
   m_TagString: Untagged
@@ -15075,21 +15010,6 @@ Transform:
   m_Father: {fileID: 1252265629}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &1734536995
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64033945712220074, guid: 2afbcbddf1c28c641843347e07675f1f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1734536993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: c98add50e7c10a7419222a70b903bbac, type: 3}
 --- !u!23 &1734536996
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15766,7 +15686,6 @@ GameObject:
   - component: {fileID: 1844718645}
   - component: {fileID: 1844718648}
   - component: {fileID: 1844718647}
-  - component: {fileID: 1844718646}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -15788,21 +15707,6 @@ Transform:
   m_Father: {fileID: 1111866178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &1844718646
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1844718644}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &1844718647
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16809,7 +16713,6 @@ GameObject:
   - component: {fileID: 2052454367}
   - component: {fileID: 2052454370}
   - component: {fileID: 2052454369}
-  - component: {fileID: 2052454368}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -16831,21 +16734,6 @@ Transform:
   m_Father: {fileID: 392504406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &2052454368
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2052454366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &2052454369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16901,7 +16789,6 @@ GameObject:
   - component: {fileID: 2054064521}
   - component: {fileID: 2054064524}
   - component: {fileID: 2054064523}
-  - component: {fileID: 2054064522}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -16923,21 +16810,6 @@ Transform:
   m_Father: {fileID: 971050225}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &2054064522
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2054064520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &2054064523
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17048,7 +16920,6 @@ GameObject:
   - component: {fileID: 2088044175}
   - component: {fileID: 2088044178}
   - component: {fileID: 2088044177}
-  - component: {fileID: 2088044176}
   m_Layer: 0
   m_Name: SFP_cap
   m_TagString: Untagged
@@ -17070,21 +16941,6 @@ Transform:
   m_Father: {fileID: 1283222624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &2088044176
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 64169197810398470, guid: 4637c7c15afb5ba40b392ad1305b3394,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2088044174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f0753e73d4fbf02419e5502043ae25f2, type: 3}
 --- !u!23 &2088044177
 MeshRenderer:
   m_ObjectHideFlags: 0
