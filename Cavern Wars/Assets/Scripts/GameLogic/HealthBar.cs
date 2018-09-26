@@ -14,7 +14,9 @@ namespace CavernWars
         [SerializeField]
         private TMP_Text _hpText;
 
-        private int _maxHealthLength;
+        [SerializeField]
+        private int _maxHealthLength = 20;
+
         private Vector3 _originalPosition;
         private Quaternion _originalRotation;
 
@@ -22,8 +24,6 @@ namespace CavernWars
         {
             _originalPosition = transform.position - transform.parent.position;
             _originalRotation = transform.rotation;
-            // The ugliest hack of this game, how the healthbar is implemented:
-            _maxHealthLength = _hpText.text.Length;
 
             PlayerName = GetComponentInParent<PlayerState>().NetworkPlayer.Name;
         }
@@ -45,7 +45,8 @@ namespace CavernWars
                 _playerName.SetText(value);
             }
         }
-
+        
+        // The ugliest hack of this game, how the healthbar is implemented:
         public void SetHealth(float hp, float maxHp)
         {
             int hpBarCount = Mathf.CeilToInt((hp / maxHp) * _maxHealthLength);

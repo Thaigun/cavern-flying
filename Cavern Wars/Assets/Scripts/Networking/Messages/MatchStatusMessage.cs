@@ -6,6 +6,9 @@ using UnityEngine.Networking;
 
 namespace CavernWars
 {
+    /// <summary>
+    /// // Host sends this to all other clients in order to start the match
+    /// </summary>
     public class MatchStatusMessage : MessageBase
     {
         public int matchStatus;

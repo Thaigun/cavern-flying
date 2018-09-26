@@ -6,6 +6,9 @@ using UnityEngine.Networking;
 
 namespace CavernWars
 {
+    /// <summary>
+    ///  The host keeps track of the health of all players. This is sent to all clients.
+    /// </summary>
     public class PlayersHealthMessage : MessageBase
     {
         public string[] playerNames;

@@ -633,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerName: {fileID: 114257857205446692}
   _hpText: {fileID: 114460365818080878}
+  _maxHealthLength: 20
 --- !u!114 &114691944344390284
 MonoBehaviour:
   m_ObjectHideFlags: 1

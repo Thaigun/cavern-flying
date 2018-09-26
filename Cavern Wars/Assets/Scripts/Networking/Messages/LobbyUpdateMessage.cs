@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 namespace CavernWars
 {
     /// <summary>
-    /// Public members of the class derived from MessageBase will be serialized and deserialized
+    /// The host updates the state of the lobby to joined players once a second.
     /// </summary>
     public class LobbyUpdateMessage : MessageBase
     {

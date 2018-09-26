@@ -17,7 +17,7 @@ namespace CavernWars
         public Vector2 position;
         public Quaternion rotation;
         public bool enginesOn;
-        public bool alive;
+        public bool alive;  // While host tells when to die, client tells here when it wants to respawn
         public ProjectileChange[] projectileChanges;
     }
 

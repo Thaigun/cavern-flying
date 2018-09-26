@@ -19,6 +19,7 @@ namespace CavernWars
         private int _bufferSize = 2;
 
         private List<NetworkBullet> _bullets;
+        private bool _justWokeUp;
 
         // When were the interpolation points received
         private Queue<float> _bufferReceiveTimes;
@@ -32,15 +33,12 @@ namespace CavernWars
             _bufferReceiveTimes = new Queue<float>();
             _positionBuffer = new Queue<Vector3>();
             _rotationBuffer = new Queue<Quaternion>();
+
+            //_justWokeUp = 
         }
 
         void Update()
         {
-            // TODO: Interpolate to make the movement smooth
-            /*if (!_interPolationInProgress && _bufferReceiveTimes.Count >= _bufferSize)
-            {
-                StartCoroutine(InterpolateMovement());
-            }*/
             if (_bufferReceiveTimes.Count > 0)
             {
                 _bufferReceiveTimes.Dequeue();
