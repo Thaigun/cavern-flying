@@ -27,6 +27,7 @@ namespace CavernWars
 
         public static NetworkInterface Instance { get; private set; }
 
+        // These delagates will be called whenever a message is received.
         public ConnectionResponseDel connectionResponseDel;
         public DisconnectDel disconnectDel;
         public DataDel gameUpdateDel;
@@ -53,8 +54,7 @@ namespace CavernWars
             ConnectionIds = new HashSet<int>();
             WaitingConnectionIds = new HashSet<int>();
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
             if (_networkTransportStarted)
@@ -109,6 +109,7 @@ namespace CavernWars
         private void OnData(byte[] buffer, int hostId, int connectionId)
         {
             MessageContainer msgContainer = ReadData(buffer);
+            // Populate rest of the message container.
             msgContainer.ConnectionId = connectionId;
             msgContainer.HostId = hostId;
             
@@ -168,7 +169,7 @@ namespace CavernWars
 
         private void OnConnect(int connectionId)
         {
-            // In case of a client, who makes the initial connection
+            // In case of a client, who makes the initial connection and receives response for it.
             if (WaitingConnectionIds.Contains(connectionId))
             {
                 if (connectionResponseDel != null)
@@ -177,14 +178,26 @@ namespace CavernWars
                 }
                 WaitingConnectionIds.Remove(connectionId);
             }
+
             ConnectionIds.Add(connectionId);
         }
 
         private void OnDisconnect(int connectionId)
         {
             ConnectionIds.Remove(connectionId);
+            if (this.disconnectDel != null)
+            {
+                disconnectDel(connectionId);
+            }
         }
 
+        /// <summary>
+        /// Reads the data from inside the buffer and creates a message container that
+        /// allows easy access to the message. Populates the container with the message
+        /// content and the message type.
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <returns></returns>
         private MessageContainer ReadData(byte[] buffer)
         {
             MessageContainer container = new MessageContainer();
@@ -279,6 +292,12 @@ namespace CavernWars
             return connectionId;
         }
 
+        /// <summary>
+        /// If the connection is made to self, then we want to imitate the connection response 
+        /// on the next tick to allow the client to act as if it was coming from a remote host.
+        /// </summary>
+        /// <param name="connId"></param>
+        /// <returns></returns>
         private IEnumerator DelayedConnectionResponse(int connId)
         {
             yield return null;
@@ -311,7 +330,7 @@ namespace CavernWars
             writer.FinishMessage();
             byte[] byteMsg = writer.ToArray();
             byte error;
-            // If to local
+            // If sending to self
             if (connectionId == -1)
             {
                 OnData(byteMsg, _hostId, -1);
@@ -336,6 +355,11 @@ namespace CavernWars
             ShutdownNetworkTransport();
         }
 
+        /// <summary>
+        /// Get a string representing your IP address and port currently used by NetworkTransport.
+        /// This only recognizes the IPv6 address at the moment and returns the first one that it finds.
+        /// </summary>
+        /// <returns></returns>
         public string GetYourIp()
         {
             string hostName = Dns.GetHostName();
@@ -352,6 +376,12 @@ namespace CavernWars
             return null;
         }
 
+        /// <summary>
+        /// Gets the ip address for a connection identified by its connection id.
+        /// </summary>
+        /// <param name="connectionId"></param>
+        /// <param name="port">The open port for the connection is populated here</param>
+        /// <returns>IP-address of the connection</returns>
         public string GetConnectionIp(int connectionId, out int port)
         {
             if (connectionId == -1)

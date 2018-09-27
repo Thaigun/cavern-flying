@@ -57,7 +57,7 @@ namespace CavernWars
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 PartyManager.Instance.CloseParty();
-                SceneManager.LoadScene(0);
+                Application.Quit();
             }
         }
 
