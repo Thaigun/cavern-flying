@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thrustForce: 24
-  _engines: {fileID: 1430672242}
+  _engines: {fileID: 1274040648}
 --- !u!1 &155863034
 GameObject:
   m_ObjectHideFlags: 0
@@ -7795,6 +7795,7 @@ GameObject:
   - component: {fileID: 1274040645}
   - component: {fileID: 1274040644}
   - component: {fileID: 1274040647}
+  - component: {fileID: 1274040648}
   m_Layer: 11
   m_Name: PlayerShip
   m_TagString: Player
@@ -7814,6 +7815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1430672241}
+  - {fileID: 1560530115}
   m_Father: {fileID: 125680228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -7894,6 +7896,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
+--- !u!114 &1274040648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274040642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9021586bab0bd48ad7b6e6d7849189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 1560530117}
 --- !u!1 &1276066604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8437,11 +8451,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1430672241}
-  - component: {fileID: 1430672242}
   - component: {fileID: 1430672243}
+  - component: {fileID: 1430672242}
   m_Layer: 11
-  m_Name: Engines
-  m_TagString: Untagged
+  m_Name: ColliderContainer
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8455,8 +8469,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1560530115}
+  m_Children: []
   m_Father: {fileID: 1274040643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8468,10 +8481,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1430672240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d9021586bab0bd48ad7b6e6d7849189, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dbddea65e16157408261919d7511cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 1560530117}
+  _ownerPlayer: {fileID: 451808643}
 --- !u!60 &1430672243
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9032,12 +9045,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560530114}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.309, z: 0}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.30900007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1430672241}
-  m_RootOrder: 0
+  m_Father: {fileID: 1274040643}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!199 &1560530116
 ParticleSystemRenderer:

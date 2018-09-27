@@ -57,9 +57,10 @@ GameObject:
   - component: {fileID: 33379151752509126}
   - component: {fileID: 23446618939995874}
   - component: {fileID: 114866700604352148}
+  - component: {fileID: 114636537671397660}
   m_Layer: 11
   m_Name: EnemyShip
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,11 +92,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4350399168381966}
-  - component: {fileID: 114984170228635694}
   - component: {fileID: 60365036570301116}
+  - component: {fileID: 114373261882601720}
   m_Layer: 11
-  m_Name: Engines
-  m_TagString: Untagged
+  m_Name: ColliderContainer
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,8 +159,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4781481529027220}
+  m_Children: []
   m_Father: {fileID: 4509486351965892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,6 +174,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4350399168381966}
+  - {fileID: 4781481529027220}
   m_Father: {fileID: 4225077623219848}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -183,12 +184,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1644497505895178}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.309, z: 0}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.30900007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4350399168381966}
-  m_RootOrder: 0
+  m_Father: {fileID: 4509486351965892}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4928002303136820
 Transform:
@@ -491,6 +492,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114373261882601720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581481010687360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbddea65e16157408261919d7511cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ownerPlayer: {fileID: 114691944344390284}
 --- !u!114 &114460365818080878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -604,6 +617,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114636537671397660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372206222973574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9021586bab0bd48ad7b6e6d7849189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 198555330877481104}
 --- !u!114 &114675006930432468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -615,7 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f30559521fbfe40902c17e83cb0856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _engine: {fileID: 114984170228635694}
+  _engine: {fileID: 114636537671397660}
   _networkBulletPrefab: {fileID: 114886108598112006, guid: b12600ab685a93f46a09ed8cc0104f01,
     type: 2}
   _rotateTransform: {fileID: 4509486351965892}
@@ -666,18 +691,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 37b02a1b1181b4b4bbd714a242a00b15, type: 2}
   - {fileID: 2100000, guid: 7b00ad4295b0f574a9fed9ba6f5edb23, type: 2}
   - {fileID: 2100000, guid: e4675792eaccba34c97f3692f5b6beee, type: 2}
---- !u!114 &114984170228635694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1581481010687360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d9021586bab0bd48ad7b6e6d7849189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 198555330877481104}
 --- !u!198 &198555330877481104
 ParticleSystem:
   m_ObjectHideFlags: 1

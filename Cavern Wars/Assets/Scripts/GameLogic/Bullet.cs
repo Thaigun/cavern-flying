@@ -71,7 +71,7 @@ namespace CavernWars
             {
                 if (GlobalEvents.projectileHitDel != null)
                 {
-                    GlobalEvents.projectileHitDel(collider.GetComponent<PlayerState>().NetworkPlayer.Name, _damage);
+                    GlobalEvents.projectileHitDel(collider.GetComponent<ColliderCompanion>().OwnerPlayer.NetworkPlayer.Name, _damage);
                 }
                 DespawnBullet(Id, BulletDespawnType.BIG_HIT);
             }

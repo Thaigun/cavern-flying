@@ -22,67 +22,76 @@ namespace CavernWars
         private bool _justWokeUp;
 
         // When were the interpolation points received
-        private Queue<float> _bufferReceiveTimes;
-        private Queue<Vector3> _positionBuffer;
-        private Queue<Quaternion> _rotationBuffer;
-        private bool _interPolationInProgress;
+        private float _previousReceiveTime;
+        private float _latestReceiveTime;
+        private Vector3 _latestPosition;
+        private Quaternion _latestRotation;
+
+        Coroutine _interpolationCoroutine;
 
         private void Awake()
         {
             _bullets = new List<NetworkBullet>();
-            _bufferReceiveTimes = new Queue<float>();
-            _positionBuffer = new Queue<Vector3>();
-            _rotationBuffer = new Queue<Quaternion>();
+        }
+
+        private void OnEnable()
+        {
+            _previousReceiveTime = 0f;
+            _latestReceiveTime = -1f;
+            _latestPosition = transform.position;
+            _latestRotation = _rotateTransform.rotation;
 
             _justWokeUp = true;
         }
 
         void Update()
         {
-            if (_bufferReceiveTimes.Count >= 2 && !_interPolationInProgress)
+            // This could be implemented by just calling the interpolation coroutine directly from 
+            // where the message is received
+            if (_latestReceiveTime > _previousReceiveTime)
             {
                 if (_justWokeUp)
                 {
                     _justWokeUp = false;
-                    transform.position = _positionBuffer.Peek();
-                    _rotateTransform.rotation = _rotationBuffer.Peek();
+                    transform.position = _latestPosition;
+                    _rotateTransform.rotation = _latestRotation;
                 }
                 else
                 {
-                    StartCoroutine(InterpolateMovement());
+                    if (_interpolationCoroutine != null)
+                    {
+                        StopCoroutine(_interpolationCoroutine);
+                    }
+                    _interpolationCoroutine = StartCoroutine(InterpolateMovement());
                 }
+
+                _previousReceiveTime = _latestReceiveTime + 0.0001f;
             }
         }
 
         private IEnumerator InterpolateMovement()
         {
-            _interPolationInProgress = true;
+            float startTime = Time.time;
+            float endTime = Time.time + (_latestReceiveTime - _previousReceiveTime);
+            float timePortion = 0f;
+            Vector3 startPos = transform.position;
+            Vector3 endPos = _latestPosition;
+            Quaternion startRot = _rotateTransform.rotation;
+            Quaternion endRot = _latestRotation;
 
-            float startTime, endTime, timePortion;
-            Vector3 startPos, endPos;
-            Quaternion startRot, endRot;
+            Debug.Log("prev and latest: " + _previousReceiveTime + ", " + _latestReceiveTime);
 
             do
             {
-                startTime = _bufferReceiveTimes.Dequeue();
-                _positionBuffer.Dequeue();
-                _rotationBuffer.Dequeue();
-                startPos = transform.position;
-                startRot = _rotateTransform.rotation;
-
-                endTime = _bufferReceiveTimes.Peek();
-                endPos = _positionBuffer.Peek();
-                endRot = _rotationBuffer.Peek();
-
                 timePortion = (Time.time - startTime) / (endTime - startTime);
+                Debug.Log("TimePortion: " + timePortion);
 
                 _rotateTransform.rotation = Quaternion.LerpUnclamped(startRot, endRot, timePortion);
                 transform.position = Vector3.LerpUnclamped(startPos, endPos, timePortion);
 
                 yield return null;
-            } while (_bufferReceiveTimes.Count < 2 && timePortion < 5);
-
-            _interPolationInProgress = false;
+            } while (timePortion < 20);
+            
         }
 
         /// <summary>
@@ -91,9 +100,9 @@ namespace CavernWars
         /// </summary>
         public void ApplyNewState(GameUpdateMessage msg)
         {
-            _positionBuffer.Enqueue(msg.position);
-            _rotationBuffer.Enqueue(msg.rotation);
-            _bufferReceiveTimes.Enqueue(Time.time);
+            _latestPosition = msg.position;
+            _latestRotation = msg.rotation;
+            _latestReceiveTime = Time.time;
             
             // Engines and bullets can be switched on and off immediately.
             _engine.SetEnginesActive(msg.enginesOn);
