@@ -343,7 +343,7 @@ namespace CavernWars
             for (int i = 0; i < addresses.Length; i++)
             {
                 IPAddress deviceIP = addresses[i];
-                if (deviceIP.AddressFamily == AddressFamily.InterNetwork)
+                if (deviceIP.AddressFamily == AddressFamily.InterNetworkV6 && !deviceIP.IsIPv6LinkLocal)
                 {
                     int port = NetworkTransport.GetHostPort(_hostId);
                     return deviceIP.ToString() + ":" + port;
