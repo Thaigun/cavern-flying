@@ -360,20 +360,21 @@ namespace CavernWars
         /// This only recognizes the IPv6 address at the moment and returns the first one that it finds.
         /// </summary>
         /// <returns></returns>
-        public string GetYourIp()
+        public List<IPAddress> GetYourIp(out int port)
         {
+            List<IPAddress> possibleAddresses = new List<IPAddress>();
             string hostName = Dns.GetHostName();
             IPAddress[] addresses = Dns.GetHostAddresses(hostName);
             for (int i = 0; i < addresses.Length; i++)
             {
                 IPAddress deviceIP = addresses[i];
-                if (deviceIP.AddressFamily == AddressFamily.InterNetworkV6 && !deviceIP.IsIPv6LinkLocal)
+                if (deviceIP.AddressFamily == AddressFamily.InterNetworkV6 || deviceIP.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    int port = NetworkTransport.GetHostPort(_hostId);
-                    return deviceIP.ToString() + ":" + port;
+                    possibleAddresses.Add(deviceIP);
                 }
             }
-            return null;
+            port = NetworkTransport.GetHostPort(_hostId);
+            return possibleAddresses;
         }
 
         /// <summary>

@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.Net;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -34,7 +36,25 @@ namespace CavernWars
         public void HostClicked()
         {
             PartyManager.Instance.StartHosting(_nameInput.text);
-            _yourIpText.text = NetworkInterface.Instance.GetYourIp();
+            StringBuilder sb = new StringBuilder();
+            int port;
+            foreach (IPAddress addr in NetworkInterface.Instance.GetYourIp(out port))
+            {
+                string address = addr.ToString();
+                if (addr.IsIPv6LinkLocal || address.StartsWith("169.254."))
+                {
+                    sb.AppendLine("Link-local: " + address + ":" + port);
+                }
+                else if (address.StartsWith("10.") || address.StartsWith("192.168."))
+                {
+                    sb.AppendLine("LAN: " + address + ":" + port);
+                }
+                else
+                {
+                    sb.AppendLine(address + ":" + port);
+                }
+            }
+            _yourIpText.text = sb.ToString();
             PlayButtonSound();
         }
 
