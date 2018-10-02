@@ -10,7 +10,7 @@ namespace CavernWars
 {
     // Network interface polls the low level system for received network messages.
     // Other classes can register to handle those events.
-    public delegate void ConnectionResponseDel(int connectionId);
+    public delegate void ConnectDel(int connectionId);
     public delegate void DisconnectDel(int connectionId);
     public delegate void DataDel(MessageContainer msgContainer);
 
@@ -28,7 +28,7 @@ namespace CavernWars
         public static NetworkInterface Instance { get; private set; }
 
         // These delagates will be called whenever a message is received.
-        public ConnectionResponseDel connectionResponseDel;
+        public ConnectDel connectionDel;
         public DisconnectDel disconnectDel;
         public DataDel gameUpdateDel;
         public DataDel lobbyUpdateDel;
@@ -172,9 +172,9 @@ namespace CavernWars
             // In case of a client, who makes the initial connection and receives response for it.
             if (WaitingConnectionIds.Contains(connectionId))
             {
-                if (connectionResponseDel != null)
+                if (connectionDel != null)
                 {
-                    connectionResponseDel(connectionId);
+                    connectionDel(connectionId);
                 }
                 WaitingConnectionIds.Remove(connectionId);
             }
@@ -301,12 +301,12 @@ namespace CavernWars
         private IEnumerator DelayedConnectionResponse(int connId)
         {
             yield return null;
-            if (this.connectionResponseDel != null)
+            if (this.connectionDel != null)
             {
-                // First receive the connection
+                // First receive the connection as a host
                 OnConnect(connId);
-                // Then respond to it
-                this.connectionResponseDel(connId);
+                // Then respond to the client of itself
+                this.connectionDel(connId);
             }
         }
 

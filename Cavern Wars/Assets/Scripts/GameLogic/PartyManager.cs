@@ -76,10 +76,11 @@ namespace CavernWars
             Instance = this;
 
             _network = NetworkInterface.Instance;
-            _network.connectionResponseDel += OnConnectionResponse;
+            _network.connectionDel += OnConnection;
             _network.disconnectDel += OnDisconnect;
             _network.lobbyUpdateDel += OnLobbyUpdate;
             _network.matchStatusDel += OnMatchStatus;
+            _network.playerInfoDel += OnPlayerInfo;
 
             ResetParty();
         }
@@ -151,13 +152,25 @@ namespace CavernWars
             }
         }
 
-        private void OnConnectionResponse(int connectionId)
+        /// <summary>
+        /// After the other client confirms the connection, send them an info message about your name so that they
+        /// can connect the connectionId to the correct player.
+        /// </summary>
+        /// <param name="connectionId"></param>
+        private void OnConnection(int connectionId)
         {
-            if (connectionId == HostConnectionId)
+            PlayerInfoMessage infoMsg = new PlayerInfoMessage();
+            infoMsg.name = _nameInput.text;
+            _network.Send(MessageType.PLAYER_INFO, infoMsg, connectionId);
+        }
+
+        private void OnPlayerInfo(MessageContainer msgContainer)
+        {
+            PlayerInfoMessage msg = msgContainer.Message as PlayerInfoMessage;
+            var player = Players.Find(p => p.Name.Equals(msg.name));
+            if (player != null)
             {
-                PlayerInfoMessage infoMsg = new PlayerInfoMessage();
-                infoMsg.name = _nameInput.text;
-                _network.Send(MessageType.PLAYER_INFO, infoMsg, connectionId);
+                player.ConnectionId = msgContainer.ConnectionId;
             }
         }
 
@@ -236,7 +249,7 @@ namespace CavernWars
                     // Open connections to other clients, host is already connected
                     // The player whose name comes first when ordered, requests the
                     // connection, so we don't get duplicate connections.
-                    if (!player.IsHost && !player.IsYou && player.Name.CompareTo(YourName) < 0)
+                    if (!player.IsHost && !player.IsYou && YourName.CompareTo(player.Name) < 0)
                     {
                         player.ConnectionId = _network.ConnectToIP(player.Ip, player.Port);
                     }
