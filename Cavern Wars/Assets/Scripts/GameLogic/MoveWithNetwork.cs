@@ -78,17 +78,11 @@ namespace CavernWars
             Vector3 endPos = _latestPosition;
             Quaternion startRot = _rotateTransform.rotation;
             Quaternion endRot = _latestRotation;
-
-            Debug.Log("prev and latest: " + _previousReceiveTime + ", " + _latestReceiveTime);
-
             do
             {
                 timePortion = (Time.time - startTime) / (endTime - startTime);
-                Debug.Log("TimePortion: " + timePortion);
-
                 _rotateTransform.rotation = Quaternion.LerpUnclamped(startRot, endRot, timePortion);
                 transform.position = Vector3.LerpUnclamped(startPos, endPos, timePortion);
-
                 yield return null;
             } while (timePortion < 20);
             
