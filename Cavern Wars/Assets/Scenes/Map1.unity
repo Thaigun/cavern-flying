@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 8522596}
   - component: {fileID: 8522598}
   - component: {fileID: 8522597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 10433606}
   - component: {fileID: 10433608}
   - component: {fileID: 10433607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 21910548}
   - component: {fileID: 21910549}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47479781}
   - component: {fileID: 47479782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70389707}
   - component: {fileID: 70389708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 76232212}
   - component: {fileID: 76232213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77592886}
   - component: {fileID: 77592887}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 79125782}
   - component: {fileID: 79125784}
   - component: {fileID: 79125783}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85876516}
   - component: {fileID: 85876517}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 104023548}
   - component: {fileID: 104023550}
   - component: {fileID: 104023549}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 115704086}
   - component: {fileID: 115704087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 173852810}
   - component: {fileID: 173852811}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 178633443}
   - component: {fileID: 178633444}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1455,7 +1455,7 @@ GameObject:
   - component: {fileID: 186083044}
   - component: {fileID: 186083046}
   - component: {fileID: 186083045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 203962718}
   - component: {fileID: 203962720}
   - component: {fileID: 203962719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,7 +1607,7 @@ GameObject:
   - component: {fileID: 204584808}
   - component: {fileID: 204584810}
   - component: {fileID: 204584809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1681,7 +1681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 205016644}
   - component: {fileID: 205016645}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1764,7 +1764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233225672}
   - component: {fileID: 233225673}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,7 +2018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 273703671}
   - component: {fileID: 273703672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2075,7 +2075,7 @@ GameObject:
   - component: {fileID: 282755011}
   - component: {fileID: 282755013}
   - component: {fileID: 282755012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2151,7 +2151,7 @@ GameObject:
   - component: {fileID: 354342241}
   - component: {fileID: 354342243}
   - component: {fileID: 354342242}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2227,7 +2227,7 @@ GameObject:
   - component: {fileID: 355277619}
   - component: {fileID: 355277621}
   - component: {fileID: 355277620}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2303,7 +2303,7 @@ GameObject:
   - component: {fileID: 373855451}
   - component: {fileID: 373855453}
   - component: {fileID: 373855452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2379,7 +2379,7 @@ GameObject:
   - component: {fileID: 373984523}
   - component: {fileID: 373984525}
   - component: {fileID: 373984524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2453,7 +2453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 392504406}
   - component: {fileID: 392504407}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2515,7 +2515,7 @@ GameObject:
   - component: {fileID: 396021160}
   - component: {fileID: 396021162}
   - component: {fileID: 396021161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2589,7 +2589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411479562}
   - component: {fileID: 411479563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2649,7 +2649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 428755600}
   - component: {fileID: 428755601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2704,7 +2704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 431709940}
   - component: {fileID: 431709941}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2764,7 +2764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444352284}
   - component: {fileID: 444352285}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2819,7 +2819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 450878117}
   - component: {fileID: 450878118}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2876,7 +2876,7 @@ GameObject:
   - component: {fileID: 451699143}
   - component: {fileID: 451699145}
   - component: {fileID: 451699144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3003,7 +3003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 470521065}
   - component: {fileID: 470521066}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3116,7 +3116,7 @@ GameObject:
   - component: {fileID: 528946184}
   - component: {fileID: 528946186}
   - component: {fileID: 528946185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3286,7 +3286,7 @@ GameObject:
   - component: {fileID: 549258990}
   - component: {fileID: 549258992}
   - component: {fileID: 549258991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3362,7 +3362,7 @@ GameObject:
   - component: {fileID: 558900911}
   - component: {fileID: 558900913}
   - component: {fileID: 558900912}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3435,7 +3435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578171673}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3477,7 +3477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 580014089}
   - component: {fileID: 580014090}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3624,7 +3624,7 @@ GameObject:
   - component: {fileID: 613530672}
   - component: {fileID: 613530675}
   - component: {fileID: 613530674}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3735,7 +3735,7 @@ GameObject:
   - component: {fileID: 639572979}
   - component: {fileID: 639572981}
   - component: {fileID: 639572980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3809,7 +3809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653681374}
   - component: {fileID: 653681375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3866,7 +3866,7 @@ GameObject:
   - component: {fileID: 657845135}
   - component: {fileID: 657845137}
   - component: {fileID: 657845136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3942,7 +3942,7 @@ GameObject:
   - component: {fileID: 660678200}
   - component: {fileID: 660678202}
   - component: {fileID: 660678201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4016,7 +4016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682763928}
   - component: {fileID: 682763929}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4129,7 +4129,7 @@ GameObject:
   - component: {fileID: 686292931}
   - component: {fileID: 686292933}
   - component: {fileID: 686292932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4205,7 +4205,7 @@ GameObject:
   - component: {fileID: 701964362}
   - component: {fileID: 701964364}
   - component: {fileID: 701964363}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4281,7 +4281,7 @@ GameObject:
   - component: {fileID: 718243683}
   - component: {fileID: 718243685}
   - component: {fileID: 718243684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4357,7 +4357,7 @@ GameObject:
   - component: {fileID: 725076151}
   - component: {fileID: 725076153}
   - component: {fileID: 725076152}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4521,7 +4521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763210986}
   - component: {fileID: 763210987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4576,7 +4576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 767370621}
   - component: {fileID: 767370622}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4633,7 +4633,7 @@ GameObject:
   - component: {fileID: 768318258}
   - component: {fileID: 768318260}
   - component: {fileID: 768318259}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4709,7 +4709,7 @@ GameObject:
   - component: {fileID: 769442538}
   - component: {fileID: 769442540}
   - component: {fileID: 769442539}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4854,7 +4854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788007762}
   - component: {fileID: 788007763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4911,7 +4911,7 @@ GameObject:
   - component: {fileID: 808099899}
   - component: {fileID: 808099902}
   - component: {fileID: 808099901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4985,7 +4985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810082121}
   - component: {fileID: 810082122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5040,7 +5040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 861165020}
   - component: {fileID: 861165021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5095,7 +5095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864476032}
   - component: {fileID: 864476033}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5152,7 +5152,7 @@ GameObject:
   - component: {fileID: 876880857}
   - component: {fileID: 876880859}
   - component: {fileID: 876880858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5228,7 +5228,7 @@ GameObject:
   - component: {fileID: 878725265}
   - component: {fileID: 878725268}
   - component: {fileID: 878725267}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5304,7 +5304,7 @@ GameObject:
   - component: {fileID: 880970494}
   - component: {fileID: 880970496}
   - component: {fileID: 880970495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5380,7 +5380,7 @@ GameObject:
   - component: {fileID: 886598091}
   - component: {fileID: 886598093}
   - component: {fileID: 886598092}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5454,7 +5454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 887115086}
   - component: {fileID: 887115087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5509,7 +5509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909976963}
   - component: {fileID: 909976964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5566,7 +5566,7 @@ GameObject:
   - component: {fileID: 911962601}
   - component: {fileID: 911962603}
   - component: {fileID: 911962602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5642,7 +5642,7 @@ GameObject:
   - component: {fileID: 914201259}
   - component: {fileID: 914201261}
   - component: {fileID: 914201260}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5789,7 +5789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 938625040}
   - component: {fileID: 938625041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5849,7 +5849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944427068}
   - component: {fileID: 944427069}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5906,7 +5906,7 @@ GameObject:
   - component: {fileID: 952891464}
   - component: {fileID: 952891466}
   - component: {fileID: 952891465}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5980,7 +5980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971050225}
   - component: {fileID: 971050226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6042,7 +6042,7 @@ GameObject:
   - component: {fileID: 989024801}
   - component: {fileID: 989024803}
   - component: {fileID: 989024802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6116,7 +6116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997042269}
   - component: {fileID: 997042270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6232,7 +6232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1019903202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6274,7 +6274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1032344238}
   - component: {fileID: 1032344239}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6329,7 +6329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1046718032}
   - component: {fileID: 1046718033}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6384,7 +6384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077147864}
   - component: {fileID: 1077147865}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6441,7 +6441,7 @@ GameObject:
   - component: {fileID: 1089539915}
   - component: {fileID: 1089539917}
   - component: {fileID: 1089539916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6517,7 +6517,7 @@ GameObject:
   - component: {fileID: 1095560249}
   - component: {fileID: 1095560251}
   - component: {fileID: 1095560250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6593,7 +6593,7 @@ GameObject:
   - component: {fileID: 1099012585}
   - component: {fileID: 1099012587}
   - component: {fileID: 1099012586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6667,7 +6667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1111866178}
   - component: {fileID: 1111866179}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6727,7 +6727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121676513}
   - component: {fileID: 1121676514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6784,7 +6784,7 @@ GameObject:
   - component: {fileID: 1145480727}
   - component: {fileID: 1145480729}
   - component: {fileID: 1145480728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6858,7 +6858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1149142346}
   - component: {fileID: 1149142347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6913,7 +6913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1156777652}
   - component: {fileID: 1156777653}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6968,7 +6968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181367652}
   - component: {fileID: 1181367653}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7022,7 +7022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183767840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OuterWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7055,7 +7055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1189953520}
   - component: {fileID: 1189953521}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7112,7 +7112,7 @@ GameObject:
   - component: {fileID: 1206348829}
   - component: {fileID: 1206348831}
   - component: {fileID: 1206348830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7186,7 +7186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1227189975}
   - component: {fileID: 1227189976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7243,7 +7243,7 @@ GameObject:
   - component: {fileID: 1236630449}
   - component: {fileID: 1236630451}
   - component: {fileID: 1236630450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7319,7 +7319,7 @@ GameObject:
   - component: {fileID: 1242992446}
   - component: {fileID: 1242992448}
   - component: {fileID: 1242992447}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7393,7 +7393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252265629}
   - component: {fileID: 1252265630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformHexagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7455,7 +7455,7 @@ GameObject:
   - component: {fileID: 1253475154}
   - component: {fileID: 1253475156}
   - component: {fileID: 1253475155}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7531,7 +7531,7 @@ GameObject:
   - component: {fileID: 1254288471}
   - component: {fileID: 1254288473}
   - component: {fileID: 1254288472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7605,7 +7605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258329978}
   - component: {fileID: 1258329979}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7660,7 +7660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258338531}
   - component: {fileID: 1258338532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7717,7 +7717,7 @@ GameObject:
   - component: {fileID: 1264804888}
   - component: {fileID: 1264804890}
   - component: {fileID: 1264804889}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7919,7 +7919,7 @@ GameObject:
   - component: {fileID: 1276066605}
   - component: {fileID: 1276066607}
   - component: {fileID: 1276066606}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7992,7 +7992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1281972297}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Caps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8028,7 +8028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1283222624}
   - component: {fileID: 1283222625}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8185,7 +8185,7 @@ GameObject:
   - component: {fileID: 1317136343}
   - component: {fileID: 1317136345}
   - component: {fileID: 1317136344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8258,7 +8258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1353696023}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8302,7 +8302,7 @@ GameObject:
   - component: {fileID: 1371075982}
   - component: {fileID: 1371075984}
   - component: {fileID: 1371075983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8378,7 +8378,7 @@ GameObject:
   - component: {fileID: 1414948694}
   - component: {fileID: 1414948696}
   - component: {fileID: 1414948695}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8543,7 +8543,7 @@ GameObject:
   - component: {fileID: 1436056407}
   - component: {fileID: 1436056409}
   - component: {fileID: 1436056408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8619,7 +8619,7 @@ GameObject:
   - component: {fileID: 1449842843}
   - component: {fileID: 1449842845}
   - component: {fileID: 1449842844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8693,7 +8693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1464758210}
   - component: {fileID: 1464758211}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8748,7 +8748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1476387737}
   - component: {fileID: 1476387738}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8861,7 +8861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1511871636}
   - component: {fileID: 1511871637}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cap (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8921,7 +8921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1528440517}
   - component: {fileID: 1528440518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8976,7 +8976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1537655363}
   - component: {fileID: 1537655364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13651,7 +13651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578821276}
   - component: {fileID: 1578821277}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13706,7 +13706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1586053839}
   - component: {fileID: 1586053840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13763,7 +13763,7 @@ GameObject:
   - component: {fileID: 1610319642}
   - component: {fileID: 1610319644}
   - component: {fileID: 1610319643}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13867,7 +13867,7 @@ GameObject:
   - component: {fileID: 1649852622}
   - component: {fileID: 1649852624}
   - component: {fileID: 1649852623}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13943,7 +13943,7 @@ GameObject:
   - component: {fileID: 1651799008}
   - component: {fileID: 1651799010}
   - component: {fileID: 1651799009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14019,7 +14019,7 @@ GameObject:
   - component: {fileID: 1656268115}
   - component: {fileID: 1656268117}
   - component: {fileID: 1656268116}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14092,7 +14092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664246499}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14136,7 +14136,7 @@ GameObject:
   - component: {fileID: 1664689423}
   - component: {fileID: 1664689425}
   - component: {fileID: 1664689424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14212,7 +14212,7 @@ GameObject:
   - component: {fileID: 1676746786}
   - component: {fileID: 1676746788}
   - component: {fileID: 1676746787}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14288,7 +14288,7 @@ GameObject:
   - component: {fileID: 1677566756}
   - component: {fileID: 1677566758}
   - component: {fileID: 1677566757}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14362,7 +14362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683274739}
   - component: {fileID: 1683274740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14504,7 +14504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1706155237}
   - component: {fileID: 1706155238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14559,7 +14559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711531293}
   - component: {fileID: 1711531294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14614,7 +14614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1726098731}
   - component: {fileID: 1726098732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14669,7 +14669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728331987}
   - component: {fileID: 1728331988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14726,7 +14726,7 @@ GameObject:
   - component: {fileID: 1730869921}
   - component: {fileID: 1730869923}
   - component: {fileID: 1730869922}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14802,7 +14802,7 @@ GameObject:
   - component: {fileID: 1731273797}
   - component: {fileID: 1731273800}
   - component: {fileID: 1731273799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14876,7 +14876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1731972311}
   - component: {fileID: 1731972312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14930,8 +14930,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733340117}
-  - component: {fileID: 1733340118}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rectangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14966,31 +14965,6 @@ Transform:
   m_Father: {fileID: 85876516}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1733340118
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733340116}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 3.0241175, y: 1.1401911}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10.6213665, y: 3.560114}
-  m_EdgeRadius: 0
 --- !u!1 &1734536993
 GameObject:
   m_ObjectHideFlags: 0
@@ -15002,7 +14976,7 @@ GameObject:
   - component: {fileID: 1734536994}
   - component: {fileID: 1734536997}
   - component: {fileID: 1734536996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_hexagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15076,7 +15050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1737401052}
   - component: {fileID: 1737401053}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15133,7 +15107,7 @@ GameObject:
   - component: {fileID: 1746574665}
   - component: {fileID: 1746574667}
   - component: {fileID: 1746574666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15209,7 +15183,7 @@ GameObject:
   - component: {fileID: 1757437759}
   - component: {fileID: 1757437761}
   - component: {fileID: 1757437760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15283,7 +15257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1757485903}
   - component: {fileID: 1757485904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15340,7 +15314,7 @@ GameObject:
   - component: {fileID: 1760385181}
   - component: {fileID: 1760385183}
   - component: {fileID: 1760385182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15484,7 +15458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1807610527}
   - component: {fileID: 1807610528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15587,7 +15561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823909172}
   - component: {fileID: 1823909173}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15642,7 +15616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1831259193}
   - component: {fileID: 1831259194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15699,7 +15673,7 @@ GameObject:
   - component: {fileID: 1844718645}
   - component: {fileID: 1844718648}
   - component: {fileID: 1844718647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15775,7 +15749,7 @@ GameObject:
   - component: {fileID: 1871111696}
   - component: {fileID: 1871111698}
   - component: {fileID: 1871111697}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15851,7 +15825,7 @@ GameObject:
   - component: {fileID: 1883551932}
   - component: {fileID: 1883551934}
   - component: {fileID: 1883551933}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15925,7 +15899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906399441}
   - component: {fileID: 1906399442}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15980,7 +15954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909437291}
   - component: {fileID: 1909437292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16035,7 +16009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1917147545}
   - component: {fileID: 1917147546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16090,7 +16064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1922994747}
   - component: {fileID: 1922994748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16147,7 +16121,7 @@ GameObject:
   - component: {fileID: 1946958833}
   - component: {fileID: 1946958835}
   - component: {fileID: 1946958834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16221,7 +16195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1952582164}
   - component: {fileID: 1952582165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16276,7 +16250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1956475827}
   - component: {fileID: 1956475828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16331,7 +16305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1969879452}
   - component: {fileID: 1969879453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16388,7 +16362,7 @@ GameObject:
   - component: {fileID: 1984076990}
   - component: {fileID: 1984076992}
   - component: {fileID: 1984076991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16462,7 +16436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009905504}
   - component: {fileID: 2009905505}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16517,7 +16491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2020900616}
   - component: {fileID: 2020900617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16574,7 +16548,7 @@ GameObject:
   - component: {fileID: 2033275189}
   - component: {fileID: 2033275191}
   - component: {fileID: 2033275190}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16650,7 +16624,7 @@ GameObject:
   - component: {fileID: 2049226182}
   - component: {fileID: 2049226184}
   - component: {fileID: 2049226183}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16726,7 +16700,7 @@ GameObject:
   - component: {fileID: 2052454367}
   - component: {fileID: 2052454370}
   - component: {fileID: 2052454369}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16802,7 +16776,7 @@ GameObject:
   - component: {fileID: 2054064521}
   - component: {fileID: 2054064524}
   - component: {fileID: 2054064523}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16876,7 +16850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056554528}
   - component: {fileID: 2056554529}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16933,7 +16907,7 @@ GameObject:
   - component: {fileID: 2088044175}
   - component: {fileID: 2088044178}
   - component: {fileID: 2088044177}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17007,7 +16981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099731029}
   - component: {fileID: 2099731030}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformRectangle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17064,7 +17038,7 @@ GameObject:
   - component: {fileID: 2121418451}
   - component: {fileID: 2121418453}
   - component: {fileID: 2121418452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SFP_platform_hex_1x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

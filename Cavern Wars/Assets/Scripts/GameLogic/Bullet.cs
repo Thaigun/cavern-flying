@@ -75,7 +75,7 @@ namespace CavernWars
                 }
                 DespawnBullet(Id, BulletDespawnType.BIG_HIT);
             }
-            else if (collider.CompareTag("Wall"))
+            else if (collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
                 DespawnBullet(Id, BulletDespawnType.SMALL_HIT);
             }
