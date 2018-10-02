@@ -235,8 +235,8 @@ namespace CavernWars
                 {
                     // Open connections to other clients, host is already connected
                     // The player whose name comes first when ordered, requests the
-                    // connection,
-                    if (!player.IsHost && !player.IsYou)
+                    // connection, so we don't get duplicate connections.
+                    if (!player.IsHost && !player.IsYou && player.Name.CompareTo(YourName) < 0)
                     {
                         player.ConnectionId = _network.ConnectToIP(player.Ip, player.Port);
                     }

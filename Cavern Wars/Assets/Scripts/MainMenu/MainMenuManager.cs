@@ -28,6 +28,15 @@ namespace CavernWars
             AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic, true);
         }
 
+        private void Update()
+        {
+            // Allow quickly typing in the link local address of my dev machine.
+            if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.D))
+            {
+                _ipInput.text = "169.254.211.28";
+            }
+        }
+
         public void PlayButtonSound()
         {
             AudioManager.Instance.PlayClip(AudioManager.Instance.buttonClick, false);

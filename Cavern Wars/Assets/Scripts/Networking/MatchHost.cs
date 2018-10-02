@@ -107,6 +107,10 @@ namespace CavernWars
             }
         }
 
+        /// <summary>
+        /// Game update is received from another player to update whaterver they are authoritative for.
+        /// </summary>
+        /// <param name="msgContainer"></param>
         private void OnGameUpdate(MessageContainer msgContainer)
         {
             GameUpdateMessage msg = msgContainer.Message as GameUpdateMessage;
@@ -124,18 +128,18 @@ namespace CavernWars
             }
         }
 
-        void PlayerDead(Player killerName, Player killedName)
+        void PlayerDead(Player killer, Player dier)
         {
-            if (!_playerDeathTime.ContainsKey(killedName.Name))
+            if (!_playerDeathTime.ContainsKey(dier.Name))
             {
-                _playerDeathTime.Add(killedName.Name, Time.time);
+                _playerDeathTime.Add(dier.Name, Time.time);
                 for (int i = 0; i < _nextScoreMessage.playerNames.Length; i++)
                 {
-                    if (_nextScoreMessage.playerNames[i].Equals(killedName.Name))
+                    if (_nextScoreMessage.playerNames[i].Equals(dier.Name))
                     {
                         _nextScoreMessage.deaths[i]++;
                     }
-                    else if (_nextScoreMessage.playerNames[i].Equals(killerName.Name))
+                    else if (_nextScoreMessage.playerNames[i].Equals(killer.Name))
                     {
                         _nextScoreMessage.kills[i]++;
                     }

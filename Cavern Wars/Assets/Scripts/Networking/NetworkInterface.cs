@@ -303,7 +303,9 @@ namespace CavernWars
             yield return null;
             if (this.connectionResponseDel != null)
             {
+                // First receive the connection
                 OnConnect(connId);
+                // Then respond to it
                 this.connectionResponseDel(connId);
             }
         }
